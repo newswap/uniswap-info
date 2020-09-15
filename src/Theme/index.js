@@ -17,11 +17,11 @@ const theme = (darkMode, color) => ({
   panelColor: darkMode ? 'rgba(255, 255, 255, 0)' : 'rgba(255, 255, 255, 0)',
   backgroundColor: darkMode ? '#212429' : '#F7F8FA',
 
-  uniswapPink: darkMode ? '#ff007a' : 'black',
+  uniswapPink: darkMode ? '#20C5A0' : 'black',
 
   concreteGray: darkMode ? '#292C2F' : '#FAFAFA',
   inputBackground: darkMode ? '#1F1F1F' : '#FAFAFA',
-  shadowColor: darkMode ? '#000' : '#2F80ED',
+  shadowColor: darkMode ? '#000' : '#20C5A0',
   mercuryGray: darkMode ? '#333333' : '#E1E1E1',
 
   text1: darkMode ? '#FAFAFA' : '#1F1F1F',
@@ -48,31 +48,31 @@ const theme = (darkMode, color) => ({
   divider: darkMode ? 'rgba(43, 43, 43, 0.435)' : 'rgba(43, 43, 43, 0.035)',
 
   //primary colors
-  primary1: darkMode ? '#2172E5' : '#ff007a',
-  primary2: darkMode ? '#3680E7' : '#FF8CC3',
-  primary3: darkMode ? '#4D8FEA' : '#FF99C9',
-  primary4: darkMode ? '#376bad70' : '#F6DDE8',
-  primary5: darkMode ? '#153d6f70' : '#FDEAF1',
+  primary1: darkMode ? '#20C5A0' : '#20C5A0',
+  primary2: darkMode ? '#3680E7' : '#63D7BD',
+  primary3: darkMode ? '#4D8FEA' : '#7ADDC6',
+  primary4: darkMode ? '#376bad70' : '#A6E8D9',
+  primary5: darkMode ? '#153d6f70' : '#BCEEE3',
 
   // color text
-  primaryText1: darkMode ? '#6da8ff' : '#ff007a',
+  primaryText1: darkMode ? '#6da8ff' : '#20C5A0',
 
   // secondary colors
-  secondary1: darkMode ? '#2172E5' : '#ff007a',
+  secondary1: darkMode ? '#20C5A0' : '#20C5A0',
   secondary2: darkMode ? '#17000b26' : '#F6DDE8',
   secondary3: darkMode ? '#17000b26' : '#FDEAF1',
 
-  shadow1: darkMode ? '#000' : '#2F80ED',
+  shadow1: darkMode ? '#000' : '#20C5A0',
 
   // other
   red1: '#FF6871',
   green1: '#27AE60',
   yellow1: '#FFE270',
   yellow2: '#F3841E',
-  link: '#2172E5',
-  blue: '2f80ed',
+  link: '#20C5A0',
+  blue: '#20C5A0',
 
-  background: darkMode ? 'black' : `radial-gradient(50% 50% at 50% 50%, #ff007a30 0%, #fff 0%)`
+  background: darkMode ? 'black' : `radial-gradient(50% 50% at 50% 50%, #20C5A030 0%, #fff 0%)`
 })
 
 const TextWrapper = styled(Text)`
@@ -160,14 +160,14 @@ export const GlobalStyle = createGlobalStyle`
   @supports (font-variation-settings: normal) {
     html { font-family: 'Inter var', sans-serif; }
   }
-  
+
   html,
   body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    font-size: 14px;    
+    font-size: 14px;
     background-color: ${({ theme }) => theme.bg6};
   }
 
@@ -179,7 +179,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  
+
 .three-line-legend {
 	width: 100%;
 	height: 70px;
@@ -214,7 +214,7 @@ export const GlobalStyle = createGlobalStyle`
 
 .tv-lightweight-charts{
   width: 100% !important;
-  
+
 
   & > * {
     width: 100% !important;
