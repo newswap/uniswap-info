@@ -5,17 +5,20 @@ import { HttpLink } from 'apollo-link-http'
 //https://api.thegraph.com/subgraphs/name/ianlapham/uniswapv2
 // devnet:http://47.240.113.82:8000/subgraphs/name/liuyong123/newswap
 // testnet: http://graphapi.testnet.cloud.diynova.com/subgraphs/name/liuyong123/newswap
+const CLIENT_URL = 'http://47.240.113.82:8000/subgraphs/name/liuyong123/newswap'
+
 export const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'http://graphapi.testnet.cloud.diynova.com/subgraphs/name/liuyong123/newswap'
+    uri: CLIENT_URL
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
 })
 
+// https://api.thegraph.com/index-node/graphql
 export const healthClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/index-node/graphql'
+    uri: CLIENT_URL
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
@@ -31,7 +34,7 @@ export const v1Client = new ApolloClient({
 
 export const blockClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'http://graphapi.testnet.cloud.diynova.com/subgraphs/name/liuyong123/newswap'
+    uri: CLIENT_URL
   }),
   cache: new InMemoryCache()
 })

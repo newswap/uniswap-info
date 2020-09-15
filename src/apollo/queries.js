@@ -1,19 +1,32 @@
 import gql from 'graphql-tag'
 import { FACTORY_ADDRESS, BUNDLE_ID } from '../constants'
 
+// export const SUBGRAPH_HEALTH = gql`
+//   query health {
+//     indexingStatusForCurrentVersion(subgraphName: "ianlapham/uniswapv2") {
+//       synced
+//       health
+//       chains {
+//         chainHeadBlock {
+//           number
+//         }
+//         latestBlock {
+//           number
+//         }
+//       }
+//     }
+//   }
+// `
 export const SUBGRAPH_HEALTH = gql`
-  query health {
-    indexingStatusForCurrentVersion(subgraphName: "ianlapham/uniswapv2") {
-      synced
-      health
-      chains {
-        chainHeadBlock {
-          number
-        }
-        latestBlock {
-          number
-        }
-      }
+  query blocks {
+    blocks(
+      first: 1
+      orderBy: timestamp
+      orderDirection: desc
+    ) {
+      id
+      number
+      timestamp
     }
   }
 `

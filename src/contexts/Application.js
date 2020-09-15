@@ -167,10 +167,16 @@ export function useLatestBlock() {
   useEffect(() => {
     async function fetch() {
       try {
+        // const res = await healthClient.query({
+        //   query: SUBGRAPH_HEALTH
+        // })
+        // const block = res.data.indexingStatusForCurrentVersion.chains[0].latestBlock.number
+
         const res = await healthClient.query({
           query: SUBGRAPH_HEALTH
         })
-        const block = res.data.indexingStatusForCurrentVersion.chains[0].latestBlock.number
+        const block = res?.data?.blocks?.[0]?.number
+        // console.log("=======useLatestBlock============" + block)
         if (block) {
           updateLatestBlock(block)
         }
