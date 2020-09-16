@@ -31,6 +31,7 @@ import { PlusCircle, Bookmark } from 'react-feather'
 import FormattedName from '../components/FormattedName'
 import { useListedTokens } from '../contexts/Application'
 import { EXPLORER_URL } from '../constants'
+import { useTranslation } from 'react-i18next'
 
 const DashboardWrapper = styled.div`
   width: 100%;
@@ -109,6 +110,8 @@ function TokenPage({ address, history }) {
   useEffect(() => {
     document.querySelector('body').scrollTo(0, 0)
   }, [])
+
+  const { t } = useTranslation()
 
   // detect color from token
   const backgroundColor = useColor(id, symbol)
@@ -237,11 +240,11 @@ function TokenPage({ address, history }) {
                         <></>
                       )}
                   <Link href={getPoolLink(address)} target="_blank">
-                    <ButtonLight color={backgroundColor}>+ Add Liquidity</ButtonLight>
+                    <ButtonLight color={backgroundColor}>+ { t('addLiquidity') }</ButtonLight>
                   </Link>
                   <Link href={getSwapLink(address)} target="_blank">
                     <ButtonDark ml={'.5rem'} mr={below1080 && '.5rem'} color={backgroundColor}>
-                      Trade
+                      { t('trade') }
                     </ButtonDark>
                   </Link>
                 </RowFixed>
@@ -254,7 +257,7 @@ function TokenPage({ address, history }) {
                   <Panel>
                     <AutoColumn gap="20px">
                       <RowBetween>
-                        <TYPE.main>Price</TYPE.main>
+                        <TYPE.main>{ t('price') }</TYPE.main>
                         <div />
                       </RowBetween>
                       <RowBetween align="flex-end">
@@ -270,7 +273,7 @@ function TokenPage({ address, history }) {
                 <Panel>
                   <AutoColumn gap="20px">
                     <RowBetween>
-                      <TYPE.main>Total Liquidity</TYPE.main>
+                      <TYPE.main>{ t('totalLiquidity') }</TYPE.main>
                       <div />
                     </RowBetween>
                     <RowBetween align="flex-end">
@@ -284,7 +287,7 @@ function TokenPage({ address, history }) {
                 <Panel>
                   <AutoColumn gap="20px">
                     <RowBetween>
-                      <TYPE.main>Volume (24hrs) {usingUtVolume && '(Untracked)'}</TYPE.main>
+                      <TYPE.main>{ t('volume(24hrs)') } {usingUtVolume && t('(untracked)')}</TYPE.main>
                       <div />
                     </RowBetween>
                     <RowBetween align="flex-end">
@@ -299,7 +302,7 @@ function TokenPage({ address, history }) {
                 <Panel>
                   <AutoColumn gap="20px">
                     <RowBetween>
-                      <TYPE.main>Transactions (24hrs)</TYPE.main>
+                      <TYPE.main>{ t('transactions(24hrs)') }</TYPE.main>
                       <div />
                     </RowBetween>
                     <RowBetween align="flex-end">
@@ -318,7 +321,7 @@ function TokenPage({ address, history }) {
 
             <span>
               <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
-                Top Pairs
+                { t('topPairs') }
               </TYPE.main>
             </span>
             <Panel
@@ -335,14 +338,14 @@ function TokenPage({ address, history }) {
                 )}
             </Panel>
             <RowBetween mt={40} mb={'1rem'}>
-              <TYPE.main fontSize={'1.125rem'}>Transactions</TYPE.main> <div />
+              <TYPE.main fontSize={'1.125rem'}>{ t('transactions') }</TYPE.main> <div />
             </RowBetween>
             <Panel rounded>
               {transactions ? <TxnList color={backgroundColor} transactions={transactions} /> : <Loader />}
             </Panel>
             <>
               <RowBetween style={{ marginTop: '3rem' }}>
-                <TYPE.main fontSize={'1.125rem'}>Token Information</TYPE.main>{' '}
+                <TYPE.main fontSize={'1.125rem'}>{ t('tokenInformation') }</TYPE.main>{' '}
               </RowBetween>
               <Panel
                 rounded
@@ -353,19 +356,19 @@ function TokenPage({ address, history }) {
               >
                 <TokenDetailsLayout>
                   <Column>
-                    <TYPE.main>Symbol</TYPE.main>
+                    <TYPE.main>{ t('symbol') }</TYPE.main>
                     <Text style={{ marginTop: '.5rem' }} fontSize={24} fontWeight="500">
                       <FormattedName text={symbol} maxCharacters={12} />
                     </Text>
                   </Column>
                   <Column>
-                    <TYPE.main>Name</TYPE.main>
+                    <TYPE.main>{ t('name') }</TYPE.main>
                     <TYPE.main style={{ marginTop: '.5rem' }} fontSize={24} fontWeight="500">
                       <FormattedName text={name} maxCharacters={16} />
                     </TYPE.main>
                   </Column>
                   <Column>
-                    <TYPE.main>Address</TYPE.main>
+                    <TYPE.main>{ t('address') }</TYPE.main>
                     <AutoRow align="flex-end">
                       <TYPE.main style={{ marginTop: '.5rem' }} fontSize={24} fontWeight="500">
                         {address.slice(0, 8) + '...' + address.slice(36, 42)}
@@ -375,7 +378,7 @@ function TokenPage({ address, history }) {
                   </Column>
                   <ButtonLight color={backgroundColor}>
                     <Link color={backgroundColor} external href={EXPLORER_URL + '/address/' + address}>
-                      View on Newton Explorer ↗
+                      { t('viewOnNewtonExplorer') } ↗
                     </Link>
                   </ButtonLight>
                 </TokenDetailsLayout>

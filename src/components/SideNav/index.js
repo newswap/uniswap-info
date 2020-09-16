@@ -12,6 +12,7 @@ import Link from '../Link'
 import { useSessionStart } from '../../contexts/Application'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import Toggle from '../Toggle'
+import { useTranslation } from 'react-i18next'
 
 const Wrapper = styled.div`
   height: ${({ isMobile }) => (isMobile ? 'initial' : '100vh')};
@@ -106,6 +107,8 @@ function SideNav({ history }) {
 
   const seconds = useSessionStart()
 
+  const { t } = useTranslation()
+
   const [isDark, toggleDarkMode] = useDarkModeManager()
 
   return (
@@ -119,7 +122,7 @@ function SideNav({ history }) {
                 <BasicLink to="/home">
                   <Option activeText={history.location.pathname === '/home' ?? undefined}>
                     <TrendingUp size={20} style={{ marginRight: '.75rem' }} />
-                    Overview
+                    { t('overview') }
                   </Option>
                 </BasicLink>
                 <BasicLink to="/tokens">
@@ -131,7 +134,7 @@ function SideNav({ history }) {
                     }
                   >
                     <Disc size={20} style={{ marginRight: '.75rem' }} />
-                    Tokens
+                    { t('tokens') }
                   </Option>
                 </BasicLink>
                 <BasicLink to="/pairs">
@@ -143,7 +146,7 @@ function SideNav({ history }) {
                     }
                   >
                     <PieChart size={20} style={{ marginRight: '.75rem' }} />
-                    Pairs
+                    { t('pairs') }
                   </Option>
                 </BasicLink>
 
@@ -156,7 +159,7 @@ function SideNav({ history }) {
                     }
                   >
                     <List size={20} style={{ marginRight: '.75rem' }} />
-                    Accounts
+                    { t('accounts') }
                   </Option>
                 </BasicLink>
               </AutoColumn>
@@ -165,7 +168,7 @@ function SideNav({ history }) {
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
             <HeaderText>
               <Link href="https://uniswap.org" target="_blank">
-                Newswap.org
+                { t('NewswapOrg') }
               </Link>
             </HeaderText>
             {/* <HeaderText>
@@ -175,7 +178,7 @@ function SideNav({ history }) {
             </HeaderText> */}
             <HeaderText>
               <Link href="https://uniswap.org/docs/v2" target="_blank">
-                Docs
+                { t('docs') }
               </Link>
             </HeaderText>
             {/* <HeaderText>
@@ -185,7 +188,7 @@ function SideNav({ history }) {
             </HeaderText> */}
             <HeaderText>
               <Link href="https://twitter.com/UniswapProtocol" target="_blank">
-                Twitter
+                { t('twitter') }
               </Link>
             </HeaderText>
             <Toggle isActive={isDark} toggle={toggleDarkMode} />
@@ -194,8 +197,8 @@ function SideNav({ history }) {
             <Polling style={{ marginLeft: '.5rem' }}>
               <PollingDot />
               <a href="/" style={{ color: 'white' }}>
-                <TYPE.small color={'white'}>
-                  Updated {!!seconds ? seconds + 's' : '-'} ago <br />
+                <TYPE.small color={'white'}> 
+                { t('updatedAgo', { seconds: !!seconds ? seconds + 's' : '-' }) } <br />
                 </TYPE.small>
               </a>
             </Polling>

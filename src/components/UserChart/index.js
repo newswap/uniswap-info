@@ -12,6 +12,7 @@ import { useUserLiquidityChart } from '../../contexts/User'
 import LocalLoader from '../LocalLoader'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import { TYPE } from '../../Theme'
+import { useTranslation } from 'react-i18next'
 
 const ChartWrapper = styled.div`
   height: 100%;
@@ -24,6 +25,8 @@ const ChartWrapper = styled.div`
 
 const UserChart = ({ account }) => {
   const chartData = useUserLiquidityChart(account)
+
+  const { t } = useTranslation()
 
   const [timeWindow, setTimeWindow] = useState(timeframeOptions.ALL_TIME)
   let utcStartTime = getTimeframe(timeWindow)
@@ -48,26 +51,26 @@ const UserChart = ({ account }) => {
       ) : (
         <RowBetween mb={40}>
           <AutoRow gap="10px">
-            <TYPE.main>Liquidity Value</TYPE.main>
+            <TYPE.main>{ t('liquidityValue')}</TYPE.main>
           </AutoRow>
           <AutoRow justify="flex-end" gap="4px">
             <OptionButton
               active={timeWindow === timeframeOptions.MONTH}
               onClick={() => setTimeWindow(timeframeOptions.MONTH)}
             >
-              1M
+              { t('1M') }
             </OptionButton>
             <OptionButton
               active={timeWindow === timeframeOptions.WEEK}
               onClick={() => setTimeWindow(timeframeOptions.WEEK)}
             >
-              1W
+              { t('1W') }
             </OptionButton>
             <OptionButton
               active={timeWindow === timeframeOptions.ALL_TIME}
               onClick={() => setTimeWindow(timeframeOptions.ALL_TIME)}
             >
-              All
+              { t('all') }
             </OptionButton>
           </AutoRow>
         </RowBetween>

@@ -9,9 +9,11 @@ import { PageWrapper, FullWrapper } from '../components'
 import { RowBetween } from '../components/Row'
 import Search from '../components/Search'
 import { useMedia } from 'react-use'
+import { useTranslation } from 'react-i18next'
 
 function AllPairsPage() {
   const allPairs = useAllPairData()
+  const { t } = useTranslation()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -23,7 +25,7 @@ function AllPairsPage() {
     <PageWrapper>
       <FullWrapper>
         <RowBetween>
-          <TYPE.largeHeader>Top Pairs</TYPE.largeHeader>
+          <TYPE.largeHeader>{ t('topPairs') }</TYPE.largeHeader>
           {!below800 && <Search small={true} />}
         </RowBetween>
         <Panel style={{ padding: below800 && '1rem 0 0 0 ' }}>

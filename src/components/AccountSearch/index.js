@@ -14,6 +14,7 @@ import { Divider } from '..'
 import { Flex } from 'rebass'
 
 import { X } from 'react-feather'
+import { useTranslation } from 'react-i18next'
 
 const Wrapper = styled.div`
   display: flex;
@@ -76,6 +77,7 @@ const DashGrid = styled.div`
 function AccountSearch({ history, small }) {
   const [accountValue, setAccountValue] = useState()
   const [savedAccounts, addAccount, removeAccount] = useSavedAccounts()
+  const { t } = useTranslation()
 
   function handleAccountSearch() {
     if (isAddress(accountValue)) {
@@ -99,7 +101,7 @@ function AccountSearch({ history, small }) {
                 }}
               />
             </Wrapper>
-            <ButtonLight onClick={handleAccountSearch}>Load Account Details</ButtonLight>
+            <ButtonLight onClick={handleAccountSearch}>{ t('loadAccountDetails') }</ButtonLight>
           </AutoRow>
         </>
       )}
@@ -108,7 +110,7 @@ function AccountSearch({ history, small }) {
         {!small && (
           <Panel>
             <DashGrid center={true} style={{ height: 'fit-content', padding: '0 0 1rem 0' }}>
-              <TYPE.main area="account">Saved Accounts</TYPE.main>
+              <TYPE.main area="account">{ t('savedAccounts') }</TYPE.main>
             </DashGrid>
             <Divider />
             {savedAccounts?.length > 0 ? (
@@ -131,7 +133,7 @@ function AccountSearch({ history, small }) {
                 )
               })
             ) : (
-              <TYPE.light style={{ marginTop: '1rem' }}>No saved accounts</TYPE.light>
+              <TYPE.light style={{ marginTop: '1rem' }}>{ t('noSavedAccounts') }</TYPE.light>
             )}
           </Panel>
         )}
@@ -159,7 +161,7 @@ function AccountSearch({ history, small }) {
                 )
               })
             ) : (
-              <TYPE.light>No pinned wallets</TYPE.light>
+              <TYPE.light>{ t('noPinnedWallets') }</TYPE.light>
             )}
           </>
         )}

@@ -7,6 +7,7 @@ import { formattedNum, localNumber } from '../../utils'
 
 import UniPrice from '../UniPrice'
 import { TYPE } from '../../Theme'
+import { useTranslation } from 'react-i18next'
 
 const Header = styled.div`
   width: 100%;
@@ -26,6 +27,8 @@ export default function GlobalStats() {
   const below816 = useMedia('(max-width: 816px)')
 
   const [showPriceCard, setShowPriceCard] = useState(false)
+
+  const { t } = useTranslation()
 
   const { oneDayVolumeUSD, oneDayTxns, pairCount } = useGlobalData()
   const [ethPrice] = useEthPrice()
@@ -47,24 +50,24 @@ export default function GlobalStats() {
               }}
               style={{ position: 'relative' }}
             >
-              NEW Price: <Medium>{formattedEthPrice}</Medium>
+              { t('newPrice') }: <Medium>{formattedEthPrice}</Medium>
               {showPriceCard && <UniPrice />}
             </TYPE.main>
           )}
 
           {!below1180 && (
             <TYPE.main mr={'1rem'}>
-              Transactions (24H): <Medium>{localNumber(oneDayTxns)}</Medium>
+              { t('transactions(24H)') }: <Medium>{localNumber(oneDayTxns)}</Medium>
             </TYPE.main>
           )}
           {!below1024 && (
             <TYPE.main mr={'1rem'}>
-              Pairs: <Medium>{localNumber(pairCount)}</Medium>
+              { t('pairs') }: <Medium>{localNumber(pairCount)}</Medium>
             </TYPE.main>
           )}
           {!below1295 && (
             <TYPE.main mr={'1rem'}>
-              Fees (24H): <Medium>{oneDayFees}</Medium>&nbsp;
+              { t('fees(24H)') }: <Medium>{oneDayFees}</Medium>&nbsp;
             </TYPE.main>
           )}
         </RowFixed>

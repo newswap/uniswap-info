@@ -13,6 +13,7 @@ import { useTimeframe } from '../../contexts/Application'
 import LocalLoader from '../LocalLoader'
 import { useColor } from '../../hooks'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
+import { useTranslation } from 'react-i18next'
 
 const ChartWrapper = styled.div`
   max-height: 420px;
@@ -36,6 +37,8 @@ const CHART_VIEW = {
 
 const PairReturnsChart = ({ account, position }) => {
   let data = useUserPositionChart(position, account)
+
+  const { t } = useTranslation()
 
   const [timeWindow, setTimeWindow] = useTimeframe()
 
@@ -65,10 +68,10 @@ const PairReturnsChart = ({ account, position }) => {
         <OptionsRow>
           <AutoRow gap="6px" style={{ flexWrap: 'nowrap' }}>
             <OptionButton active={chartView === CHART_VIEW.VALUE} onClick={() => setChartView(CHART_VIEW.VALUE)}>
-              Liquidity
+              { t('liquidity') }
             </OptionButton>
             <OptionButton active={chartView === CHART_VIEW.FEES} onClick={() => setChartView(CHART_VIEW.FEES)}>
-              Fees
+              { t('fees') }
             </OptionButton>
           </AutoRow>
           <AutoRow justify="flex-end" gap="6px">
@@ -76,19 +79,19 @@ const PairReturnsChart = ({ account, position }) => {
               active={timeWindow === timeframeOptions.WEEK}
               onClick={() => setTimeWindow(timeframeOptions.WEEK)}
             >
-              1W
+              { t('1W') }
             </OptionButton>
             <OptionButton
               active={timeWindow === timeframeOptions.MONTH}
               onClick={() => setTimeWindow(timeframeOptions.MONTH)}
             >
-              1M
+              { t('1M') }
             </OptionButton>
             <OptionButton
               active={timeWindow === timeframeOptions.ALL_TIME}
               onClick={() => setTimeWindow(timeframeOptions.ALL_TIME)}
             >
-              All
+              { t('all') }
             </OptionButton>
           </AutoRow>
         </OptionsRow>

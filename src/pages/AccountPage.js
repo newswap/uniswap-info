@@ -19,6 +19,7 @@ import { FEE_WARNING_TOKENS, EXPLORER_URL } from '../constants'
 import { BasicLink } from '../components/Link'
 import { useMedia } from 'react-use'
 import Search from '../components/Search'
+import { useTranslation } from 'react-i18next'
 
 const AccountWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.2);
@@ -90,6 +91,8 @@ function AccountPage({ account }) {
   // get data for this account
   const transactions = useUserTransactions(account)
   const positions = useUserPositions(account)
+
+  const { t } = useTranslation()
 
   // get data for user stats
   const transactionCount = transactions?.swaps?.length + transactions?.burns?.length + transactions?.mints?.length
@@ -168,7 +171,7 @@ function AccountPage({ account }) {
             <span>
               <TYPE.header fontSize={24}>{account?.slice(0, 6) + '...' + account?.slice(38, 42)}</TYPE.header>
               <Link lineHeight={'145.23%'} href={EXPLORER_URL + '/address/' + account} target="_blank">
-                <TYPE.main fontSize={14}>View on Newton Explorer</TYPE.main>
+                <TYPE.main fontSize={14}>{ t('viewOnNewtonExplorer') }</TYPE.main>
               </Link>
             </span>
             <AccountWrapper>
@@ -179,7 +182,7 @@ function AccountPage({ account }) {
           </RowBetween>
         </Header>
         <DashboardWrapper>
-          {showWarning && <Warning>Fees cannot currently be calculated for pairs that include AMPL.</Warning>}
+          {showWarning && <Warning>{ t('warningAMPL') }</Warning>}
           {!hideLPContent && (
             <DropdownWrapper>
               <ButtonDropdown width="100%" onClick={() => setShowDropdown(!showDropdown)} open={showDropdown}>
@@ -188,14 +191,14 @@ function AccountPage({ account }) {
                     <StyledIcon>
                       <Activity size={16} />
                     </StyledIcon>
-                    <TYPE.body ml={'10px'}>All Positions</TYPE.body>
+                    <TYPE.body ml={'10px'}>{ t('allPositions') }</TYPE.body>
                   </RowFixed>
                 )}
                 {activePosition && (
                   <RowFixed>
                     <DoubleTokenLogo a0={activePosition.pair.token0.id} a1={activePosition.pair.token1.id} size={16} />
                     <TYPE.body ml={'16px'}>
-                      {activePosition.pair.token0.symbol}-{activePosition.pair.token1.symbol} Position
+                      {activePosition.pair.token0.symbol}-{activePosition.pair.token1.symbol} { t('position') }
                     </TYPE.body>
                   </RowFixed>
                 )}
@@ -221,7 +224,7 @@ function AccountPage({ account }) {
                           >
                             <DoubleTokenLogo a0={p.pair.token0.id} a1={p.pair.token1.id} size={16} />
                             <TYPE.body ml={'16px'}>
-                              {p.pair.token0.symbol}-{p.pair.token1.symbol} Position
+                              {p.pair.token0.symbol}-{p.pair.token1.symbol} { t('position') }
                             </TYPE.body>
                           </MenuRow>
                         )
@@ -238,7 +241,7 @@ function AccountPage({ account }) {
                           <StyledIcon>
                             <Activity size={16} />
                           </StyledIcon>
-                          <TYPE.body ml={'10px'}>All Positions</TYPE.body>
+                          <TYPE.body ml={'10px'}>{ t('allPositions') }</TYPE.body>
                         </RowFixed>
                       </MenuRow>
                     )}
@@ -252,7 +255,7 @@ function AccountPage({ account }) {
               <AutoRow gap="20px">
                 <AutoColumn gap="10px">
                   <RowBetween>
-                    <TYPE.body>Liquidity (Including Fees)</TYPE.body>
+                    <TYPE.body>{ t('liquidity(includingFees)') }</TYPE.body>
                     <div />
                   </RowBetween>
                   <RowFixed align="flex-end">
@@ -267,7 +270,7 @@ function AccountPage({ account }) {
                 </AutoColumn>
                 <AutoColumn gap="10px">
                   <RowBetween>
-                    <TYPE.body>Fees Earned (Cumulative)</TYPE.body>
+                    <TYPE.body>{ t('feesEarned(cumulative)') }</TYPE.body>
                     <div />
                   </RowBetween>
                   <RowFixed align="flex-end">
@@ -291,7 +294,7 @@ function AccountPage({ account }) {
             </PanelWrapper>
           )}
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
-            Positions
+            { t('positions') }
           </TYPE.main>{' '}
           <Panel
             style={{
@@ -301,7 +304,7 @@ function AccountPage({ account }) {
             <PositionList positions={positions} />
           </Panel>
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
-            Transactions
+            { t('transactions') }
           </TYPE.main>{' '}
           <Panel
             style={{
@@ -311,7 +314,7 @@ function AccountPage({ account }) {
             <TxnList transactions={transactions} />
           </Panel>
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
-            Wallet Stats
+            { t('walletStats') }
           </TYPE.main>{' '}
           <Panel
             style={{
@@ -321,17 +324,17 @@ function AccountPage({ account }) {
             <AutoRow gap="20px">
               <AutoColumn gap="8px">
                 <TYPE.header fontSize={24}>{totalSwappedUSD ? formattedNum(totalSwappedUSD, true) : '-'}</TYPE.header>
-                <TYPE.main>Total Value Swapped</TYPE.main>
+                <TYPE.main>{ t('totalValueSwapped') }</TYPE.main>
               </AutoColumn>
               <AutoColumn gap="8px">
                 <TYPE.header fontSize={24}>
                   {totalSwappedUSD ? formattedNum(totalSwappedUSD * 0.003, true) : '-'}
                 </TYPE.header>
-                <TYPE.main>Total Fees Paid</TYPE.main>
+                <TYPE.main>{ t('totalFeesPaid') }</TYPE.main>
               </AutoColumn>
               <AutoColumn gap="8px">
                 <TYPE.header fontSize={24}>{transactionCount ? transactionCount : '-'}</TYPE.header>
-                <TYPE.main>Total Transactions</TYPE.main>
+                <TYPE.main>{ t('totalTransactions') }</TYPE.main>
               </AutoColumn>
             </AutoRow>
           </Panel>

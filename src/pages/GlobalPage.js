@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Box } from 'rebass'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 import { AutoRow, RowBetween } from '../components/Row'
 import { AutoColumn } from '../components/Column'
@@ -51,6 +52,8 @@ function GlobalPage() {
   const transactions = useGlobalTransactions()
   const { totalLiquidityUSD, oneDayVolumeUSD, volumeChangeUSD, liquidityChangeUSD } = useGlobalData()
 
+  const { t } = useTranslation()
+
   // breakpoints
   const below800 = useMedia('(max-width: 800px)')
 
@@ -69,7 +72,7 @@ function GlobalPage() {
       <ContentWrapper>
         <div>
           <AutoColumn gap="24px" style={{ paddingBottom: below800 ? '0' : '24px' }}>
-            <TYPE.largeHeader>{below800 ? 'Protocol Analytics' : 'Newswap Protocol Analytics'}</TYPE.largeHeader>
+            <TYPE.largeHeader>{below800 ? t('protocolAnalytics') : t('newswapProtocolAnalytics') }</TYPE.largeHeader>
             <Search />
             <GlobalStats />
           </AutoColumn>
@@ -80,7 +83,7 @@ function GlobalPage() {
                   <AutoColumn gap="36px">
                     <AutoColumn gap="20px">
                       <RowBetween>
-                        <TYPE.main>Volume (24hrs)</TYPE.main>
+                        <TYPE.main>{ t("volume(24hrs)") }</TYPE.main>
                         <div />
                       </RowBetween>
                       <RowBetween align="flex-end">
@@ -92,7 +95,7 @@ function GlobalPage() {
                     </AutoColumn>
                     <AutoColumn gap="20px">
                       <RowBetween>
-                        <TYPE.main>Total Liquidity</TYPE.main>
+                        <TYPE.main>{ t('totalLiquidity') }</TYPE.main>
                         <div />
                       </RowBetween>
                       <RowBetween align="flex-end">
@@ -126,8 +129,8 @@ function GlobalPage() {
           )}
           <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
             <RowBetween>
-              <TYPE.main fontSize={'1.125rem'}>Top Tokens</TYPE.main>
-              <CustomLink to={'/tokens'}>See All</CustomLink>
+              <TYPE.main fontSize={'1.125rem'}>{ t('topTokens') }</TYPE.main>
+              <CustomLink to={'/tokens'}>{ t('seeAll') }</CustomLink>
             </RowBetween>
           </ListOptions>
           <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ' }}>
@@ -135,8 +138,8 @@ function GlobalPage() {
           </Panel>
           <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
             <RowBetween>
-              <TYPE.main fontSize={'1rem'}>Top Pairs</TYPE.main>
-              <CustomLink to={'/pairs'}>See All</CustomLink>
+              <TYPE.main fontSize={'1rem'}>{ t('topPairs') }</TYPE.main>
+              <CustomLink to={'/pairs'}>{ t('seeAll') }</CustomLink>
             </RowBetween>
           </ListOptions>
           <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ' }}>
@@ -145,7 +148,7 @@ function GlobalPage() {
 
           <span>
             <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '2rem' }}>
-              Transactions
+              { t('transactions') }
             </TYPE.main>
           </span>
           <Panel style={{ margin: '1rem 0' }}>

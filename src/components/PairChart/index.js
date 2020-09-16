@@ -14,6 +14,7 @@ import DropdownSelect from '../DropdownSelect'
 import CandleStickChart from '../CandleChart'
 import LocalLoader from '../LocalLoader'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
+import { useTranslation } from 'react-i18next'
 
 const ChartWrapper = styled.div`
   height: 100%;
@@ -40,6 +41,8 @@ const CHART_VIEW = {
 
 const PairChart = ({ address, color, base0, base1 }) => {
   const [chartFilter, setChartFilter] = useState(CHART_VIEW.LIQUIDITY)
+
+  const { t } = useTranslation()
 
   const [timeWindow, setTimeWindow] = useState(timeframeOptions.MONTH)
 
@@ -130,7 +133,7 @@ const PairChart = ({ address, color, base0, base1 }) => {
                 setChartFilter(CHART_VIEW.LIQUIDITY)
               }}
             >
-              Liquidity
+              { t('liquidity') }
             </OptionButton>
             <OptionButton
               active={chartFilter === CHART_VIEW.VOLUME}
@@ -139,7 +142,7 @@ const PairChart = ({ address, color, base0, base1 }) => {
                 setChartFilter(CHART_VIEW.VOLUME)
               }}
             >
-              Volume
+              { t('volume') }
             </OptionButton>
             <OptionButton
               active={chartFilter === CHART_VIEW.RATE0}
@@ -165,19 +168,19 @@ const PairChart = ({ address, color, base0, base1 }) => {
               active={timeWindow === timeframeOptions.WEEK}
               onClick={() => setTimeWindow(timeframeOptions.WEEK)}
             >
-              1W
+              { t('1W') }
             </OptionButton>
             <OptionButton
               active={timeWindow === timeframeOptions.MONTH}
               onClick={() => setTimeWindow(timeframeOptions.MONTH)}
             >
-              1M
+              { t('1M') }
             </OptionButton>
             <OptionButton
               active={timeWindow === timeframeOptions.ALL_TIME}
               onClick={() => setTimeWindow(timeframeOptions.ALL_TIME)}
             >
-              All
+              { t('all') }
             </OptionButton>
           </AutoRow>
         </OptionsRow>

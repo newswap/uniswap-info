@@ -15,6 +15,7 @@ import { withRouter } from 'react-router-dom'
 import { OVERVIEW_TOKEN_BLACKLIST } from '../../constants'
 import FormattedName from '../FormattedName'
 import { TYPE } from '../../Theme'
+import { useTranslation } from 'react-i18next'
 
 dayjs.extend(utc)
 
@@ -126,6 +127,8 @@ function TopTokenList({ tokens, itemMax = 10 }) {
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
 
+  const { t } = useTranslation()
+
   // sorting
   const [sortDirection, setSortDirection] = useState(true)
   const [sortedColumn, setSortedColumn] = useState(SORT_FIELD.LIQ)
@@ -223,7 +226,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
               setSortDirection(sortedColumn !== SORT_FIELD.NAMe ? true : !sortDirection)
             }}
           >
-            {below680 ? 'Symbol' : 'Name'} {sortedColumn === SORT_FIELD.NAME ? (!sortDirection ? '↑' : '↓') : ''}
+            {below680 ? t('symbol') : t('name') } {sortedColumn === SORT_FIELD.NAME ? (!sortDirection ? '↑' : '↓') : ''}
           </ClickableText>
         </Flex>
         {!below680 && (
@@ -235,7 +238,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.SYMBOL ? true : !sortDirection)
               }}
             >
-              Symbol {sortedColumn === SORT_FIELD.SYMBOL ? (!sortDirection ? '↑' : '↓') : ''}
+              { t('symbol') } {sortedColumn === SORT_FIELD.SYMBOL ? (!sortDirection ? '↑' : '↓') : ''}
             </ClickableText>
           </Flex>
         )}
@@ -248,7 +251,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
               setSortDirection(sortedColumn !== SORT_FIELD.LIQ ? true : !sortDirection)
             }}
           >
-            Liquidity {sortedColumn === SORT_FIELD.LIQ ? (!sortDirection ? '↑' : '↓') : ''}
+            { t('liquidity') } {sortedColumn === SORT_FIELD.LIQ ? (!sortDirection ? '↑' : '↓') : ''}
           </ClickableText>
         </Flex>
         <Flex alignItems="center">
@@ -259,7 +262,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
               setSortDirection(sortedColumn !== SORT_FIELD.VOL ? true : !sortDirection)
             }}
           >
-            Volume (24hrs)
+            { t('volume(24hrs)') }
             {sortedColumn === SORT_FIELD.VOL ? (!sortDirection ? '↑' : '↓') : ''}
           </ClickableText>
         </Flex>
@@ -272,7 +275,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.PRICE ? true : !sortDirection)
               }}
             >
-              Price {sortedColumn === SORT_FIELD.PRICE ? (!sortDirection ? '↑' : '↓') : ''}
+              { t('price') } {sortedColumn === SORT_FIELD.PRICE ? (!sortDirection ? '↑' : '↓') : ''}
             </ClickableText>
           </Flex>
         )}
@@ -307,7 +310,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
         <div onClick={() => setPage(page === 1 ? page : page - 1)}>
           <Arrow faded={page === 1 ? true : false}>←</Arrow>
         </div>
-        <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
+        <TYPE.body>{ t('pageOf', {page: page, maxPage: maxPage}) }</TYPE.body>
         <div onClick={() => setPage(page === maxPage ? page : page + 1)}>
           <Arrow faded={page === maxPage ? true : false}>→</Arrow>
         </div>

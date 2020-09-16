@@ -9,9 +9,11 @@ import { PageWrapper, FullWrapper } from '../components'
 import { RowBetween } from '../components/Row'
 import Search from '../components/Search'
 import { useMedia } from 'react-use'
+import { useTranslation } from 'react-i18next'
 
 function AllTokensPage() {
   const allTokens = useAllTokenData()
+  const { t } = useTranslation()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -23,7 +25,7 @@ function AllTokensPage() {
     <PageWrapper>
       <FullWrapper>
         <RowBetween>
-          <TYPE.largeHeader>Top Tokens</TYPE.largeHeader>
+          <TYPE.largeHeader>{ t('topTokens') }</TYPE.largeHeader>
           {!below600 && <Search small={true} />}
         </RowBetween>
         <Panel style={{ marginTop: '6px', padding: below600 && '1rem 0 0 0 ' }}>

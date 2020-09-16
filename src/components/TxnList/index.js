@@ -16,6 +16,7 @@ import DropdownSelect from '../DropdownSelect'
 import FormattedName from '../FormattedName'
 import { TYPE } from '../../Theme'
 import { EXPLORER_URL } from '../../constants'
+import { useTranslation } from 'react-i18next'
 
 dayjs.extend(utc)
 
@@ -166,6 +167,8 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
   // page state
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
+
+  const { t } = useTranslation()
 
   // sorting
   const [sortDirection, setSortDirection] = useState(true)
@@ -337,7 +340,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
                 }}
                 active={txFilter === TXN_TYPE.ALL}
               >
-                All
+                { t('all') }
             </SortText>
               <SortText
                 onClick={() => {
@@ -345,7 +348,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
                 }}
                 active={txFilter === TXN_TYPE.SWAP}
               >
-                Swaps
+                { t('swaps') }
             </SortText>
               <SortText
                 onClick={() => {
@@ -353,7 +356,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
                 }}
                 active={txFilter === TXN_TYPE.ADD}
               >
-                Adds
+                { t('adds') }
             </SortText>
               <SortText
                 onClick={() => {
@@ -361,7 +364,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
                 }}
                 active={txFilter === TXN_TYPE.REMOVE}
               >
-                Removes
+                { t('removes') }
             </SortText>
             </RowFixed>
           )}
@@ -375,7 +378,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
               setSortDirection(sortedColumn !== SORT_FIELD.VALUE ? true : !sortDirection)
             }}
           >
-            Total Value {sortedColumn === SORT_FIELD.VALUE ? (!sortDirection ? '↑' : '↓') : ''}
+            { t('totalValue') } {sortedColumn === SORT_FIELD.VALUE ? (!sortDirection ? '↑' : '↓') : ''}
           </ClickableText>
         </Flex>
         {!below780 && (
@@ -388,7 +391,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.AMOUNT0 ? true : !sortDirection)
               }}
             >
-              {symbol0Override ? symbol0Override + ' Amount' : 'Token Amount'}{' '}
+              {symbol0Override ? symbol0Override + ' ' + t('amount') : t('tokenAmount')}{' '}
               {sortedColumn === SORT_FIELD.AMOUNT0 ? (sortDirection ? '↑' : '↓') : ''}
             </ClickableText>
           </Flex>
@@ -404,14 +407,14 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
                   setSortDirection(sortedColumn !== SORT_FIELD.AMOUNT1 ? true : !sortDirection)
                 }}
               >
-                {symbol1Override ? symbol1Override + ' Amount' : 'Token Amount'}{' '}
+                {symbol1Override ? symbol1Override + ' ' + t('amount') : t('tokenAmount')}{' '}
                 {sortedColumn === SORT_FIELD.AMOUNT1 ? (sortDirection ? '↑' : '↓') : ''}
               </ClickableText>
             </Flex>
           )}
           {!below1080 && (
             <Flex alignItems="center">
-              <TYPE.body area="account">Account</TYPE.body>
+              <TYPE.body area="account">{ t('account') }</TYPE.body>
             </Flex>
           )}
           <Flex alignItems="center">
@@ -433,7 +436,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
         {!filteredList ? (
           <LocalLoader />
         ) : filteredList.length === 0 ? (
-          <EmptyCard>No recent transactions found.</EmptyCard>
+          <EmptyCard>{ t('noRecentTransactionsFound') }</EmptyCard>
         ) : (
               filteredList.map((item, index) => {
                 return (
@@ -453,7 +456,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
         >
           <Arrow faded={page === 1 ? true : false}>←</Arrow>
         </div>
-        <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
+        <TYPE.body>{ t('pageOf', {page: page, maxPage: maxPage}) }</TYPE.body>
         <div
           onClick={e => {
             setPage(page === maxPage ? page : page + 1)
