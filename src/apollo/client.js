@@ -5,7 +5,7 @@ import { HttpLink } from 'apollo-link-http'
 //https://api.thegraph.com/subgraphs/name/ianlapham/uniswapv2
 // devnet:http://47.240.113.82:8000/subgraphs/name/liuyong123/newswap
 // testnet: http://graphapi.testnet.cloud.diynova.com/subgraphs/name/liuyong123/newswap
-const CLIENT_URL = 'http://47.240.113.82:8000/subgraphs/name/liuyong123/newswap'
+const CLIENT_URL = 'http://graphapi.testnet.cloud.diynova.com/subgraphs/name/liuyong123/newswap'
 
 export const client = new ApolloClient({
   link: new HttpLink({

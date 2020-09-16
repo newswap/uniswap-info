@@ -39,7 +39,7 @@ export default function UniPrice() {
   const usdcPerEth = usdcPair ? parseFloat(usdcPair.token0Price).toFixed(2) : '-'
   
   // dev-token1Price, test-token0Price
-  const usdtPerEth = usdtPair ? parseFloat(usdtPair.token1Price).toFixed(4) : '-'
+  const usdtPerEth = usdtPair ? parseFloat(usdtPair.token0Price).toFixed(4) : '-'
 
   return (
     <PriceCard>
