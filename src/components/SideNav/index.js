@@ -167,7 +167,7 @@ function SideNav({ history }) {
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
             <HeaderText>
-              <Link href="https://uniswap.org" target="_blank">
+              <Link href="https://newswap.org" target="_blank">
                 { t('NewswapOrg') }
               </Link>
             </HeaderText>
@@ -177,7 +177,7 @@ function SideNav({ history }) {
               </Link>
             </HeaderText> */}
             <HeaderText>
-              <Link href="https://uniswap.org/docs/v2" target="_blank">
+              <Link href="https://newswap.org/docs/v2" target="_blank">
                 { t('docs') }
               </Link>
             </HeaderText>
@@ -187,7 +187,7 @@ function SideNav({ history }) {
               </Link>
             </HeaderText> */}
             <HeaderText>
-              <Link href="https://twitter.com/UniswapProtocol" target="_blank">
+              <Link href="https://twitter.com/NewswapProtocol" target="_blank">
                 { t('twitter') }
               </Link>
             </HeaderText>

@@ -221,8 +221,8 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     const utcCurrentTime = dayjs()
     const utcOneDayBack = utcCurrentTime.subtract(1, 'day').unix()
     const utcTwoDaysBack = utcCurrentTime.subtract(2, 'day').unix()
-    const utcOneWeekBack = utcCurrentTime.subtract(1, 'week').unix()
-    const utcTwoWeeksBack = utcCurrentTime.subtract(2, 'week').unix()
+    const utcOneWeekBack = utcCurrentTime.subtract(3, 'day').unix()
+    const utcTwoWeeksBack = utcCurrentTime.subtract(4, 'day').unix()
 
     // get the blocks needed for time travel queries
     let [oneDayBlock, twoDayBlock, oneWeekBlock, twoWeekBlock] = await getBlocksFromTimestamps([

@@ -6,7 +6,7 @@ import { RowFixed } from '../Row'
 import { TYPE } from '../../Theme'
 import { usePairData } from '../../contexts/PairData'
 import { formattedNum } from '../../utils'
-import { USDT_PAIR } from '../../constants'
+import { NUSD_NEW_PAIR } from '../../constants'
 
 const PriceCard = styled(Panel)`
   position: absolute;
@@ -27,7 +27,7 @@ function formatPercent(rawPercent) {
 export default function UniPrice() {
   const daiPair = usePairData('0xa478c2975ab1ea89e8196811f51a7b7ade33eb11')
   const usdcPair = usePairData('0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc')
-  const usdtPair = usePairData(USDT_PAIR)
+  const usdtPair = usePairData(NUSD_NEW_PAIR)
 
   const totalLiquidity = useMemo(() => {
     return daiPair && usdcPair && usdtPair
@@ -37,14 +37,13 @@ export default function UniPrice() {
 
   const daiPerEth = daiPair ? parseFloat(daiPair.token0Price).toFixed(2) : '-'
   const usdcPerEth = usdcPair ? parseFloat(usdcPair.token0Price).toFixed(2) : '-'
-  
   // dev-token1Price, test-token0Price
   const usdtPerEth = usdtPair ? parseFloat(usdtPair.token0Price).toFixed(4) : '-'
 
   return (
     <PriceCard>
-      <AutoColumn gap="10px">
-        {/* <RowFixed>
+      {/* <AutoColumn gap="10px">
+        <RowFixed>
           <TYPE.main>DAI/NEW: {formattedNum(daiPerEth, true)}</TYPE.main>
           <TYPE.light style={{ marginLeft: '10px' }}>
             {daiPair && totalLiquidity ? formatPercent(daiPair.trackedReserveUSD / totalLiquidity) : '-'}
@@ -55,14 +54,14 @@ export default function UniPrice() {
           <TYPE.light style={{ marginLeft: '10px' }}>
             {usdcPair && totalLiquidity ? formatPercent(usdcPair.trackedReserveUSD / totalLiquidity) : '-'}
           </TYPE.light>
-        </RowFixed> */}
+        </RowFixed>
         <RowFixed>
           <TYPE.main>USDT/NEW: {formattedNum(usdtPerEth, true)}</TYPE.main>
           <TYPE.light style={{ marginLeft: '10px' }}>
             {usdtPair && totalLiquidity ? formatPercent(usdtPair.trackedReserveUSD / totalLiquidity) : '-'}
           </TYPE.light>
         </RowFixed>
-      </AutoColumn>
+      </AutoColumn> */}
     </PriceCard>
   )
 }

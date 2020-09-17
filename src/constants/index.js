@@ -9,10 +9,8 @@ export const EXPLORER_URL = 'https://explorer.testnet.newtonproject.org'
 
 export const EXCHANGE_URL = 'https://newswap.testnet.cloud.diynova.com'
 
-// 不同合约地址使用price不同
-// dev:0x279677d9d2f4194428c9a39262129d870b5c5185    usdt为token1
-// test: 0xea9761627eca1efb35c5e6b525f1e8a6f477a047  usdt为token0
-export const USDT_PAIR = '0xea9761627eca1efb35c5e6b525f1e8a6f477a047'
+// dev:0x279677d9d2f4194428c9a39262129d870b5c5185 usdt为token1   test: 0xea9761627eca1efb35c5e6b525f1e8a6f477a047 usdt为token0  
+export const NUSD_NEW_PAIR = '0xea9761627eca1efb35c5e6b525f1e8a6f477a047'
 
 export const BUNDLE_ID = '1'
 
@@ -27,9 +25,9 @@ export const timeframeOptions = {
 // test: https://release.cloud.diynova.com/sth/newswap/tokenlist.json
 // token list urls to fetch tokens from - use for warnings on tokens and pairs
 export const SUPPORTED_LIST_URLS__NO_ENS = [
-  'https://release.cloud.diynova.com/sth/newswap/tokenlist.json',
-  'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
-  'https://www.coingecko.com/tokens_list/uniswap/defi_100/v_0_0_0.json'
+  'https://release.cloud.diynova.com/sth/newswap/tokenlist.json'
+  // 'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
+  // 'https://www.coingecko.com/tokens_list/uniswap/defi_100/v_0_0_0.json'
 ]
 
 // hide from overview list
