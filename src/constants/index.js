@@ -7,7 +7,11 @@ export const WNEW_ADDRESS = '0x55d1cf675d4618b7ba371faa3ff4f559d0f5c6d9' //小�
 // testnet: https://explorer.testnet.newtonproject.org     devnet:http://explorer.newtonproject.dev.diynova.com
 export const EXPLORER_URL = 'https://explorer.testnet.newtonproject.org'
 
-export const EXCHANGE_URL = 'https://newswap.testnet.cloud.diynova.com'
+// testnet: https://app.testnet.newswap.org     mainnet:https://app.newswap.org
+export const EXCHANGE_URL = 'https://app.testnet.newswap.org'
+
+// testnet: https://testnet.newswap.org   mainnet: https://newswap.org
+export const NEWSWAP_URL = "https://testnet.newswap.org"
 
 // dev:0x279677d9d2f4194428c9a39262129d870b5c5185 usdt为token1   test: 0xea9761627eca1efb35c5e6b525f1e8a6f477a047 usdt为token0  
 export const NUSD_NEW_PAIR = '0xea9761627eca1efb35c5e6b525f1e8a6f477a047'

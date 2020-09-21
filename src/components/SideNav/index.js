@@ -13,6 +13,7 @@ import { useSessionStart } from '../../contexts/Application'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import Toggle from '../Toggle'
 import { useTranslation } from 'react-i18next'
+import { NEWSWAP_URL } from '../../constants'
 
 const Wrapper = styled.div`
   height: ${({ isMobile }) => (isMobile ? 'initial' : '100vh')};
@@ -167,7 +168,7 @@ function SideNav({ history }) {
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
             <HeaderText>
-              <Link href="https://newswap.org" target="_blank">
+              <Link href={NEWSWAP_URL} target="_blank">
                 { t('NewswapOrg') }
               </Link>
             </HeaderText>
@@ -176,11 +177,11 @@ function SideNav({ history }) {
                 V1 Analytics
               </Link>
             </HeaderText> */}
-            <HeaderText>
+            {/* <HeaderText>
               <Link href="https://newswap.org/docs/v2" target="_blank">
                 { t('docs') }
               </Link>
-            </HeaderText>
+            </HeaderText> */}
             {/* <HeaderText>
               <Link href="https://discord.com/invite/XErMcTq" target="_blank">
                 Discord

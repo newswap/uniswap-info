@@ -1,5 +1,8 @@
-{  "totalLiquidity": "总流通量",
+{  
+  "totalLiquidity": "总流通量",
   "volume(24hrs)": "24小时交易量",
+  "priceChange(24hrs)": "24小时价格变化",  
+  "volume(7d)": "7天交易量",
   "topTokens": "热门通证",
   "seeAll": "查看全部",
   "topPairs": "热门交易对",
@@ -89,5 +92,14 @@
   "viewContractOnNewtonExplorer": "在  NewExplorer 查看 {{tokenOrPair}} 合约",
   "iUnderstand": "我已了解",
   "protocolAnalytics": "数据分析",
-  "newswapProtocolAnalytics": "Newswap 数据分析中心"
+  "newswapProtocolAnalytics": "Newswap 数据分析中心",
+  "time": "时间",
+  "1dayAgo": "1天前",
+  "daysAgo": "{{days}}天前",
+  "1hourAgo": "1小时前",
+  "hoursAgo": "{{hours}}小时前",
+  "1minuteAgo": "1分钟前",
+  "minutesAgo": "{{minutes}}分钟前",
+  "1secondAgo": "1秒前",
+  "secondsAgo": "{{seconds}}秒前"
 }

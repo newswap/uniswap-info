@@ -1,6 +1,7 @@
 {
   "totalLiquidity": "Total Liquidity",
   "volume(24hrs)": "Volume (24hrs)",
+  "priceChange(24hrs)": "Price Change (24hrs)",
   "volume(7d)": "Volume (7d)",
   "topTokens": "Top Tokens",
   "seeAll": "See All",
@@ -91,5 +92,14 @@
   "viewContractOnNewtonExplorer": "View {{tokenOrPair}} contract on Newton Explorer",
   "iUnderstand": "I understand",
   "protocolAnalytics": "Protocol Analytics",
-  "newswapProtocolAnalytics": "Newswap Protocol Analytics"
+  "newswapProtocolAnalytics": "Newswap Protocol Analytics",
+  "time": "Time",
+  "1dayAgo": "1 day ago",
+  "daysAgo": "{{days}} days ago",
+  "1hourAgo": "1 hour ago",
+  "hoursAgo": "{{hours}} hours ago",
+  "1minuteAgo": "1 minute ago",
+  "minutesAgo": "{{minutes}} minutes ago",
+  "1secondAgo": "1 second ago",
+  "secondsAgo": "{{seconds}} seconds ago"
 }
