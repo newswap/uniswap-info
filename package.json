@@ -2,7 +2,7 @@
   "name": "newswap-info",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://newswap.info",
+  "homepage": "https://info.testnet.newswap.org",
   "dependencies": {
     "@popperjs/core": "^2.4.2",
     "@reach/portal": "^0.10.3",
