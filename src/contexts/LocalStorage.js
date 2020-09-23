@@ -47,7 +47,7 @@ function init() {
   const defaultLocalStorage = {
     [VERSION]: CURRENT_VERSION,
     [EN_MODE]: navigator.language.substr(0, 2)==='zh' ? false : true,
-    [DARK_MODE]: true,
+    [DARK_MODE]: false,
     [DISMISSED_PATHS]: {},
     [SAVED_ACCOUNTS]: [],
     [SAVED_TOKENS]: {},

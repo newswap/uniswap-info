@@ -4,6 +4,7 @@ import { useUserTransactions, useUserPositions } from '../contexts/User'
 import TxnList from '../components/TxnList'
 import Panel from '../components/Panel'
 import { formattedNum } from '../utils'
+import { hexAddress2NewAddress } from '../utils/newchain'
 import Row, { AutoRow, RowFixed, RowBetween } from '../components/Row'
 import { AutoColumn } from '../components/Column'
 import UserChart from '../components/UserChart'
@@ -15,7 +16,7 @@ import { PageWrapper, ContentWrapper, StyledIcon } from '../components'
 import DoubleTokenLogo from '../components/DoubleLogo'
 import { Bookmark, Activity } from 'react-feather'
 import Link from '../components/Link'
-import { FEE_WARNING_TOKENS, EXPLORER_URL } from '../constants'
+import { FEE_WARNING_TOKENS, EXPLORER_URL, CHAIN_ID } from '../constants'
 import { BasicLink } from '../components/Link'
 import { useMedia } from 'react-use'
 import Search from '../components/Search'
@@ -158,10 +159,10 @@ function AccountPage({ account }) {
       <ContentWrapper>
         <RowBetween>
           <TYPE.body>
-            <BasicLink to="/accounts">{'Accounts '}</BasicLink>→{' '}
-            <Link lineHeight={'145.23%'} href={EXPLORER_URL + '/address/' + account} target="_blank">
+            <BasicLink to="/accounts">{ t('accounts') + ' ' }</BasicLink>→{' '}
+            <Link lineHeight={'145.23%'} href={EXPLORER_URL + '/address/' + hexAddress2NewAddress(account, CHAIN_ID)} target="_blank">
               {' '}
-              {account?.slice(0, 42)}{' '}
+              {hexAddress2NewAddress(account, CHAIN_ID).slice(0, 42)}{' '}
             </Link>
           </TYPE.body>
           {!below600 && <Search small={true} />}
@@ -169,8 +170,8 @@ function AccountPage({ account }) {
         <Header>
           <RowBetween>
             <span>
-              <TYPE.header fontSize={24}>{account?.slice(0, 6) + '...' + account?.slice(38, 42)}</TYPE.header>
-              <Link lineHeight={'145.23%'} href={EXPLORER_URL + '/address/' + account} target="_blank">
+              <TYPE.header fontSize={24}>{hexAddress2NewAddress(account, CHAIN_ID).slice(0, 6) + '...' + hexAddress2NewAddress(account, CHAIN_ID).slice(35, 42)}</TYPE.header>
+              <Link lineHeight={'145.23%'} href={EXPLORER_URL + '/address/' + hexAddress2NewAddress(account, CHAIN_ID)} target="_blank">
                 <TYPE.main fontSize={14}>{ t('viewOnNewtonExplorer') }</TYPE.main>
               </Link>
             </span>

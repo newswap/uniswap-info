@@ -5,6 +5,8 @@ import LocalLoader from '../LocalLoader'
 import utc from 'dayjs/plugin/utc'
 import { Box, Flex } from 'rebass'
 import styled from 'styled-components'
+import { hexAddress2NewAddress } from '../../utils/newchain'
+import { CHAIN_ID } from '../../constants'
 
 import { CustomLink } from '../Link'
 import { Divider } from '..'
@@ -112,10 +114,10 @@ function LPList({ lps, disbaleLinks, maxItems = 10 }) {
         )}
         <DataText area="name" fontWeight="500" justifyContent="flex-start">
           <CustomLink style={{ marginLeft: below600 ? 0 : '1rem', whiteSpace: 'nowrap' }} to={'/account/' + lp.user.id}>
-            {below800 ? lp.user.id.slice(0, 4) + '...' + lp.user.id.slice(38, 42) : lp.user.id}
+            {below800 ? hexAddress2NewAddress(lp.user.id, CHAIN_ID).slice(0, 4) + '...' + hexAddress2NewAddress(lp.user.id, CHAIN_ID).slice(35, 42) : hexAddress2NewAddress(lp.user.id, CHAIN_ID)}
           </CustomLink>
         </DataText>
-
+        
         {/* {!below1080 && (
           <DataText area="type" justifyContent="flex-end">
             {lp.type}

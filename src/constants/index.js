@@ -4,6 +4,9 @@ export const FACTORY_ADDRESS = '0xCe59bbCFe029789af935DFF388Fb65771e2845B2'
 // dev:0x2678fb6e5af58f7b520ace2cd3a4f476b771c6f2   test:0x55d1cf675d4618b7ba371faa3ff4f559d0f5c6d9
 export const WNEW_ADDRESS = '0x55d1cf675d4618b7ba371faa3ff4f559d0f5c6d9' //小写
 
+// test:1007  mainnet:1012
+export const CHAIN_ID = 1007
+
 // testnet: https://explorer.testnet.newtonproject.org     devnet:http://explorer.newtonproject.dev.diynova.com
 export const EXPLORER_URL = 'https://explorer.testnet.newtonproject.org'
 

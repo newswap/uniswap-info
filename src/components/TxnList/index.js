@@ -4,6 +4,7 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
 import { formatTime, formattedNum, urls } from '../../utils'
+import { hexAddress2NewAddress } from '../../utils/newchain'
 import { useMedia } from 'react-use'
 import { useCurrentCurrency } from '../../contexts/Application'
 import { RowFixed, RowBetween } from '../Row'
@@ -15,7 +16,7 @@ import { Divider, EmptyCard } from '..'
 import DropdownSelect from '../DropdownSelect'
 import FormattedName from '../FormattedName'
 import { TYPE } from '../../Theme'
-import { EXPLORER_URL } from '../../constants'
+import { EXPLORER_URL, CHAIN_ID } from '../../constants'
 import { useTranslation } from 'react-i18next'
 
 dayjs.extend(utc)
@@ -315,8 +316,8 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
         )}
         {!below1080 && (
           <DataText area="account">
-            <Link color={color} external href={EXPLORER_URL + '/address/' + item.account}>
-              {item.account && item.account.slice(0, 6) + '...' + item.account.slice(38, 42)}
+            <Link color={color} external href={EXPLORER_URL + '/address/' + hexAddress2NewAddress(item.account, CHAIN_ID)}>
+              {hexAddress2NewAddress(item.account, CHAIN_ID) && hexAddress2NewAddress(item.account, CHAIN_ID).slice(0, 6) + '...' + hexAddress2NewAddress(item.account, CHAIN_ID).slice(35, 42)}
             </Link>
           </DataText>
         )}

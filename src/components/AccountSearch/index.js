@@ -5,6 +5,9 @@ import styled from 'styled-components'
 import { ButtonLight, ButtonFaded } from '../ButtonStyled'
 import { AutoRow, RowBetween } from '../Row'
 import { isAddress } from '../../utils'
+import { hexAddress2NewAddress, newAddress2HexAddress, isValidNewAddress } from '../../utils/newchain'
+import { CHAIN_ID } from '../../constants'
+
 import { useSavedAccounts } from '../../contexts/LocalStorage'
 import { AutoColumn } from '../Column'
 import { TYPE } from '../../Theme'
@@ -80,10 +83,11 @@ function AccountSearch({ history, small }) {
   const { t } = useTranslation()
 
   function handleAccountSearch() {
-    if (isAddress(accountValue)) {
-      history.push('/account/' + accountValue)
-      if (!savedAccounts.includes(accountValue)) {
-        addAccount(accountValue)
+    if (isAddress(accountValue) || isValidNewAddress(accountValue)) {
+      const accountHexAddress = accountValue.startsWith('NEW') ? newAddress2HexAddress(accountValue).toLowerCase() : accountValue
+      history.push('/account/' + accountHexAddress)
+      if (!savedAccounts.includes(accountHexAddress)) {
+        addAccount(accountHexAddress)
       }
     }
   }
@@ -95,7 +99,7 @@ function AccountSearch({ history, small }) {
           <AutoRow>
             <Wrapper>
               <Input
-                placeholder="0x..."
+                placeholder="NEW..."
                 onChange={e => {
                   setAccountValue(e.target.value)
                 }}
@@ -122,7 +126,7 @@ function AccountSearch({ history, small }) {
                       justifyContent="space-between"
                       onClick={() => history.push('/account/' + account)}
                     >
-                      <AccountLink>{account?.slice(0, 42)}</AccountLink>
+                      <AccountLink>{hexAddress2NewAddress(account, CHAIN_ID).slice(0, 42)}</AccountLink>
                       <Hover onClick={() => removeAccount(account)}>
                         <StyledIcon>
                           <X size={16} />
@@ -147,9 +151,9 @@ function AccountSearch({ history, small }) {
                   <RowBetween key={account}>
                     <ButtonFaded onClick={() => history.push('/account/' + account)}>
                       {small ? (
-                        <TYPE.header>{account?.slice(0, 6) + '...' + account?.slice(38, 42)}</TYPE.header>
+                        <TYPE.header>{hexAddress2NewAddress(account, CHAIN_ID).slice(0, 6) + '...' + hexAddress2NewAddress(account, CHAIN_ID).slice(35, 42)}</TYPE.header>
                       ) : (
-                        <AccountLink>{account?.slice(0, 42)}</AccountLink>
+                        <AccountLink>{hexAddress2NewAddress(account, CHAIN_ID).slice(0, 42)}</AccountLink>
                       )}
                     </ButtonFaded>
                     <Hover onClick={() => removeAccount(account)}>
