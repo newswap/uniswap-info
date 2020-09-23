@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect } from 'react'
+import i18next from 'i18next'
 
 const UNISWAP = 'UNISWAP'
 
@@ -11,8 +12,9 @@ const SAVED_TOKENS = 'SAVED_TOKENS'
 const SAVED_PAIRS = 'SAVED_PAIRS'
 
 const DARK_MODE = 'DARK_MODE'
+const EN_MODE = 'EN_MODE'
 
-const UPDATABLE_KEYS = [DARK_MODE, DISMISSED_PATHS, SAVED_ACCOUNTS, SAVED_PAIRS, SAVED_TOKENS]
+const UPDATABLE_KEYS = [DARK_MODE, EN_MODE, DISMISSED_PATHS, SAVED_ACCOUNTS, SAVED_PAIRS, SAVED_TOKENS]
 
 const UPDATE_KEY = 'UPDATE_KEY'
 
@@ -44,6 +46,7 @@ function reducer(state, { type, payload }) {
 function init() {
   const defaultLocalStorage = {
     [VERSION]: CURRENT_VERSION,
+    [EN_MODE]: navigator.language.substr(0, 2)==='zh' ? false : true,
     [DARK_MODE]: true,
     [DISMISSED_PATHS]: {},
     [SAVED_ACCOUNTS]: [],
@@ -98,6 +101,22 @@ export function useDarkModeManager() {
     [updateKey, isDarkMode]
   )
   return [isDarkMode, toggleDarkMode]
+}
+
+export function useENModeManager() {
+  const [state, { updateKey }] = useLocalStorageContext()
+  let isENMode = state[EN_MODE]
+  const toggleENMode = useCallback(
+    value => {
+      updateKey(EN_MODE, value === false || value === true ? value : !isENMode)
+      
+      i18next.changeLanguage(!isENMode ? 'en': 'zh-CN', (err, t) => {
+        if (err) return console.log('something went wrong loading', err);
+      });
+    },
+    [updateKey, isENMode]
+  )
+  return [isENMode, toggleENMode]
 }
 
 export function usePathDismissed(path) {

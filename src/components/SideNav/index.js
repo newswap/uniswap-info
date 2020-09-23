@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { usePrevious } from 'react-use'
 import styled from 'styled-components'
 import { AutoColumn } from '../Column'
 import Title from '../Title'
@@ -10,10 +11,12 @@ import { withRouter } from 'react-router-dom'
 import { TrendingUp, List, PieChart, Disc } from 'react-feather'
 import Link from '../Link'
 import { useSessionStart } from '../../contexts/Application'
-import { useDarkModeManager } from '../../contexts/LocalStorage'
-import Toggle from '../Toggle'
+import { useDarkModeManager, useENModeManager } from '../../contexts/LocalStorage'
+import ThemeToggle, { LanguageToggle } from '../Toggle'
 import { useTranslation } from 'react-i18next'
 import { NEWSWAP_URL } from '../../constants'
+import dayjs from 'dayjs'
+require('dayjs/locale/zh-cn')
 
 const Wrapper = styled.div`
   height: ${({ isMobile }) => (isMobile ? 'initial' : '100vh')};
@@ -111,6 +114,16 @@ function SideNav({ history }) {
   const { t } = useTranslation()
 
   const [isDark, toggleDarkMode] = useDarkModeManager()
+  const [isEN, toggleENMode] = useENModeManager()
+  const previousLanguage = usePrevious(isEN)
+  dayjs.locale(isEN ? 'en':'zh-cn')
+
+  // reset the day.jslocale if language switches
+  useEffect(() => {
+    if(previousLanguage !== isEN) {
+      dayjs.locale(isEN ? 'en':'zh-cn')
+    }
+  }, [isEN, previousLanguage])
 
   return (
     <Wrapper isMobile={below1080}>
@@ -192,7 +205,8 @@ function SideNav({ history }) {
                 { t('twitter') }
               </Link>
             </HeaderText>
-            <Toggle isActive={isDark} toggle={toggleDarkMode} />
+            <LanguageToggle isActive={isEN} toggle={toggleENMode} />
+            <ThemeToggle isActive={isDark} toggle={toggleDarkMode} />
           </AutoColumn>
           {!below1180 && (
             <Polling style={{ marginLeft: '.5rem' }}>

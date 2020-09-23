@@ -9,7 +9,6 @@ import { RowFixed } from '../Row'
 import { OptionButton } from '../ButtonStyled'
 import { getTimeframe } from '../../utils'
 import { TYPE } from '../../Theme'
-import { useTranslation } from 'react-i18next'
 
 const CHART_VIEW = {
   VOLUME: 'Volume',
@@ -23,7 +22,6 @@ const VOLUME_WINDOW = {
 const GlobalChart = ({ display }) => {
   // chart options
   const [chartView, setChartView] = useState(display === 'volume' ? CHART_VIEW.VOLUME : CHART_VIEW.LIQUIDITY)
-  const { t } = useTranslation()
 
   // time window and window size for chart
   const timeWindow = timeframeOptions.ALL_TIME
@@ -77,7 +75,7 @@ const GlobalChart = ({ display }) => {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [isClient, width]) // Empty array ensures that effect is only run on mount and unmount
-
+  
   return chartDataFiltered ? (
     <>
       {below800 && (
@@ -90,7 +88,7 @@ const GlobalChart = ({ display }) => {
             data={dailyData}
             base={totalLiquidityUSD}
             baseChange={liquidityChangeUSD}
-            title={ t('liquidity') }
+            title="liquidity"
             field="totalLiquidityUSD"
             width={width}
             type={CHART_TYPES.AREA}
@@ -103,7 +101,7 @@ const GlobalChart = ({ display }) => {
             data={chartDataFiltered}
             base={volumeWindow === VOLUME_WINDOW.WEEKLY ? oneWeekVolume : oneDayVolumeUSD}
             baseChange={volumeWindow === VOLUME_WINDOW.WEEKLY ? weeklyVolumeChange : volumeChangeUSD}
-            title={volumeWindow === VOLUME_WINDOW.WEEKLY ? t('volume(7d)') : t('volume(24hrs)')}
+            title={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'volume(7d)' : 'volume(24hrs)'}
             field={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'weeklyVolumeUSD' : 'dailyVolumeUSD'}
             width={width}
             type={CHART_TYPES.BAR}

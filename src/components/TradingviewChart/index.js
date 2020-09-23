@@ -6,8 +6,9 @@ import { formattedNum } from '../../utils'
 import styled from 'styled-components'
 import { usePrevious } from 'react-use'
 import { Play } from 'react-feather'
-import { useDarkModeManager } from '../../contexts/LocalStorage'
+import { useDarkModeManager, useENModeManager } from '../../contexts/LocalStorage'
 import { IconWrapper } from '..'
+import { useTranslation } from 'react-i18next'
 
 dayjs.extend(utc)
 
@@ -35,6 +36,7 @@ const TradingViewChart = ({
 }) => {
   // reference for DOM element to create with chart
   const ref = useRef()
+  const { t } = useTranslation()
 
   // pointer to the chart object
   const [chartCreated, setChartCreated] = useState(false)
@@ -66,9 +68,12 @@ const TradingViewChart = ({
   const textColor = darkMode ? 'white' : 'black'
   const previousTheme = usePrevious(darkMode)
 
+  const [enMode] = useENModeManager()
+  const previousLanguage = usePrevious(enMode)
+
   // reset the chart if them switches
   useEffect(() => {
-    if (chartCreated && previousTheme !== darkMode) {
+    if (chartCreated && (previousTheme !== darkMode || previousLanguage !== enMode)) {
       // remove the tooltip element
       let tooltip = document.getElementById('tooltip-id' + type)
       let node = document.getElementById('test-id' + type)
@@ -76,7 +81,7 @@ const TradingViewChart = ({
       chartCreated.resize(0, 0)
       setChartCreated()
     }
-  }, [chartCreated, darkMode, previousTheme, type])
+  }, [chartCreated, darkMode, previousTheme, enMode, previousLanguage, type])
 
   // if no chart created yet, create one with options and add to DOM manually
   useEffect(() => {
@@ -166,7 +171,7 @@ const TradingViewChart = ({
       // get the title of the chart
       function setLastBarText() {
         toolTip.innerHTML =
-          `<div style="font-size: 16px; margin: 4px 0px; color: ${textColor};">${title} ${
+          `<div style="font-size: 16px; margin: 4px 0px; color: ${textColor};">${t(title)} ${
             // type === CHART_TYPES.BAR && !useWeekly ? '(24hr)' : ''
             type === CHART_TYPES.BAR && !useWeekly ? '' : ''
           }</div>` +
@@ -201,7 +206,7 @@ const TradingViewChart = ({
           var price = param.seriesPrices.get(series)
 
           toolTip.innerHTML =
-            `<div style="font-size: 16px; margin: 4px 0px; color: ${textColor};">${title}</div>` +
+            `<div style="font-size: 16px; margin: 4px 0px; color: ${textColor};">${t(title)}</div>` +
             `<div style="font-size: 22px; margin: 4px 0px; color: ${textColor}">` +
             formattedNum(price, true) +
             '</div>' +
@@ -227,7 +232,8 @@ const TradingViewChart = ({
     topScale,
     type,
     useWeekly,
-    width
+    width,
+    t
   ])
 
   // responsiveness

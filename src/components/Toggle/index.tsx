@@ -28,7 +28,25 @@ export interface ToggleProps {
   toggle: () => void
 }
 
-export default function Toggle({ isActive, toggle }: ToggleProps) {
+export function LanguageToggle({ isActive, toggle }: ToggleProps) {
+  return (
+    <StyledToggle onClick={toggle} style={{ marginTop: '.0rem'}}>
+      <span>
+        <IconWrapper isActive={!isActive}>
+          中
+        </IconWrapper>
+      </span>
+      <span style={{ padding: '0 .5rem' }}>{' / '}</span>
+      <span>
+        <IconWrapper isActive={isActive}>
+          EN
+        </IconWrapper>
+      </span>
+    </StyledToggle>
+  )
+}
+
+export default function ThemeToggle({ isActive, toggle }: ToggleProps) {
   return (
     <StyledToggle onClick={toggle}>
       <span>
