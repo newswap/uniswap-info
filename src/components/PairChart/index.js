@@ -33,10 +33,10 @@ const OptionsRow = styled.div`
 `
 
 const CHART_VIEW = {
-  VOLUME: 'Volume',
-  LIQUIDITY: 'Liquidity',
-  RATE0: 'Rate 0',
-  RATE1: 'Rate 1'
+  VOLUME: 'volume',
+  LIQUIDITY: 'liquidity',
+  RATE0: 'rate0',
+  RATE1: 'rate1'
 }
 
 const PairChart = ({ address, color, base0, base1 }) => {

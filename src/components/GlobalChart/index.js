@@ -11,8 +11,8 @@ import { getTimeframe } from '../../utils'
 import { TYPE } from '../../Theme'
 
 const CHART_VIEW = {
-  VOLUME: 'Volume',
-  LIQUIDITY: 'Liquidity'
+  VOLUME: 'volume',
+  LIQUIDITY: 'liquidity'
 }
 
 const VOLUME_WINDOW = {

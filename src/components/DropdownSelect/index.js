@@ -6,6 +6,7 @@ import { AutoColumn } from '../Column'
 import { ChevronDown as Arrow } from 'react-feather'
 import { TYPE } from '../../Theme'
 import { StyledIcon } from '..'
+import { useTranslation } from 'react-i18next'
 
 const Wrapper = styled.div`
   z-index: 20;
@@ -51,11 +52,12 @@ const ArrowStyled = styled(Arrow)`
 
 const DropdownSelect = ({ options, active, setActive, color }) => {
   const [showDropdown, toggleDropdown] = useState(false)
+  const { t } = useTranslation()
 
   return (
     <Wrapper open={showDropdown} color={color}>
       <RowBetween onClick={() => toggleDropdown(!showDropdown)} justify="center">
-        <TYPE.main>{active}</TYPE.main>
+        <TYPE.main>{t(active)}</TYPE.main>
         <StyledIcon>
           <ArrowStyled />
         </StyledIcon>
@@ -74,7 +76,7 @@ const DropdownSelect = ({ options, active, setActive, color }) => {
                     }}
                     key={index}
                   >
-                    <TYPE.body fontSize={14}>{option}</TYPE.body>
+                    <TYPE.body fontSize={14}>{t(option)}</TYPE.body>
                   </Row>
                 )
               )

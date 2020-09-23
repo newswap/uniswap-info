@@ -101,5 +101,8 @@
   "1minuteAgo": "1分钟前",
   "minutesAgo": "{{minutes}}分钟前",
   "1secondAgo": "1秒前",
-  "secondsAgo": "{{seconds}}秒前"
+  "secondsAgo": "{{seconds}}秒前",
+  "rate0": "价格 0",
+  "rate1": "价格 1",
+  "price(line)": "价格(线型)"
 }

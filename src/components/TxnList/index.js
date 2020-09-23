@@ -140,10 +140,10 @@ const SORT_FIELD = {
 }
 
 const TXN_TYPE = {
-  ALL: 'All',
-  SWAP: 'Swaps',
-  ADD: 'Adds',
-  REMOVE: 'Removes'
+  ALL: 'all',
+  SWAP: 'swaps',
+  ADD: 'adds',
+  REMOVE: 'removes'
 }
 
 const ITEMS_PER_PAGE = 10

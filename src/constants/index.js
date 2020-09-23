@@ -22,11 +22,11 @@ export const NUSD_NEW_PAIR = '0xea9761627eca1efb35c5e6b525f1e8a6f477a047'
 export const BUNDLE_ID = '1'
 
 export const timeframeOptions = {
-  WEEK: '1 week',
-  MONTH: '1 month',
+  WEEK: '1W',
+  MONTH: '1M',
   // THREE_MONTHS: '3 months',
   // YEAR: '1 year',
-  ALL_TIME: 'All time'
+  ALL_TIME: 'all'
 }
 
 // test: https://release.cloud.diynova.com/sth/newswap/tokenlist.json
