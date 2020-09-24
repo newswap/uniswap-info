@@ -220,7 +220,7 @@ export async function getLiquidityTokenBalanceOvertime(account, timestamps) {
  * @param {Array} timestamps
  */
 export async function getShareValueOverTime(pairAddress, timestamps) {
-  if (!timestamps) {
+  if (timestamps.length == 0 || !timestamps) {
     const utcCurrentTime = dayjs()
     const utcSevenDaysBack = utcCurrentTime.subtract(8, 'day').unix()
     timestamps = getTimestampRange(utcSevenDaysBack, 86400, 7)
@@ -243,12 +243,12 @@ export async function getShareValueOverTime(pairAddress, timestamps) {
       values.push({
         timestamp,
         sharePriceUsd,
-        totalSupply: result.data[row].totalSupply,
-        reserve0: result.data[row].reserve0,
-        reserve1: result.data[row].reserve1,
-        reserveUSD: result.data[row].reserveUSD,
-        token0DerivedETH: result.data[row].token0.derivedETH,
-        token1DerivedETH: result.data[row].token1.derivedETH,
+        totalSupply: (!result.data[row] || !result.data[row].totalSupply) ? 0 : result.data[row].totalSupply,
+        reserve0: (!result.data[row] || !result.data[row].reserve0) ? 0 : result.data[row].reserve0,
+        reserve1: (!result.data[row] || !result.data[row].reserve1) ? 0 : result.data[row].reserve1,
+        reserveUSD: (!result.data[row] || !result.data[row].reserveUSD) ? 0 : result.data[row].reserveUSD,
+        token0DerivedETH: (!result.data[row] || !result.data[row].token0.derivedETH) ? 0 : result.data[row].token0.derivedETH,
+        token1DerivedETH: (!result.data[row] || !result.data[row].token1.derivedETH) ? 0 : result.data[row].token1.derivedETH,
         roiUsd: values && values[0] ? sharePriceUsd / values[0]['sharePriceUsd'] : 1,
         ethPrice: 0,
         token0PriceUSD: 0,
