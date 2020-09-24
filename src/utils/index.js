@@ -328,7 +328,7 @@ export const formatTime = (unix, t) => {
   } else if (inSeconds >= 60) {
     return `${inMinutes === 1 ? t('1minuteAgo') : t('minutesAgo', {minutes: inMinutes})}`
   } else {
-    return `${inSeconds === 1 ? t('1secondAgo') : t('secondsAgo', {secondsAgo: inSeconds})}`
+    return `${inSeconds === 1 ? t('1secondAgo') : t('secondsAgo', {seconds: inSeconds})}`
   }
 }
 

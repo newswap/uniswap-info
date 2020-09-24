@@ -221,8 +221,8 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     const utcCurrentTime = dayjs()
     const utcOneDayBack = utcCurrentTime.subtract(1, 'day').unix()
     const utcTwoDaysBack = utcCurrentTime.subtract(2, 'day').unix()
-    const utcOneWeekBack = utcCurrentTime.subtract(3, 'day').unix()
-    const utcTwoWeeksBack = utcCurrentTime.subtract(4, 'day').unix()
+    const utcOneWeekBack = utcCurrentTime.subtract(1, 'week').unix()
+    const utcTwoWeeksBack = utcCurrentTime.subtract(2, 'week').unix()
 
     // get the blocks needed for time travel queries
     let [oneDayBlock, twoDayBlock, oneWeekBlock, twoWeekBlock] = await getBlocksFromTimestamps([
@@ -264,23 +264,24 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     })
     const twoWeekData = twoWeekResult.data.uniswapFactories[0]
 
-    if (data && oneDayData && twoDayData && twoWeekData) {
+    if (data && oneDayData) {
+    // if (data && oneDayData && twoDayData && twoWeekData) {
       let [oneDayVolumeUSD, volumeChangeUSD] = get2DayPercentChange(
         data.totalVolumeUSD,
         oneDayData.totalVolumeUSD ? oneDayData.totalVolumeUSD : 0,
-        twoDayData.totalVolumeUSD ? twoDayData.totalVolumeUSD : 0
+        (twoDayData && twoDayData.totalVolumeUSD) ? twoDayData.totalVolumeUSD : 0
       )
 
       const [oneWeekVolume, weeklyVolumeChange] = get2DayPercentChange(
         data.totalVolumeUSD,
-        oneWeekData.totalVolumeUSD,
-        twoWeekData.totalVolumeUSD
+        (oneWeekData && oneWeekData.totalVolumeUSD) ? oneWeekData.totalVolumeUSD : 0,
+        (twoWeekData && twoWeekData.totalVolumeUSD) ? twoWeekData.totalVolumeUSD : 0
       )
 
       const [oneDayTxns, txnChange] = get2DayPercentChange(
         data.txCount,
         oneDayData.txCount ? oneDayData.txCount : 0,
-        twoDayData.txCount ? twoDayData.txCount : 0
+        (twoDayData && twoDayData.txCount) ? twoDayData.txCount : 0
       )
 
       // format the total liquidity in USD
