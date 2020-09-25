@@ -9,7 +9,7 @@ i18next
   .use(initReactI18next)
   .init({
     backend: {
-      loadPath: `./locales/{{lng}}.json`
+      loadPath: `/locales/{{lng}}.json`
     },
     react: {
       useSuspense: true
@@ -18,6 +18,9 @@ i18next
     preload: ['en','zh-CN'],
     keySeparator: false,
     interpolation: { escapeValue: false }
+  },
+  (error) => {
+    console.log(error, "i18n error loading");
   })
 
 export default i18next
