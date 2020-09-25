@@ -16,8 +16,8 @@ export const EXCHANGE_URL = 'https://app.testnet.newswap.org'
 // testnet: https://testnet.newswap.org   mainnet: https://newswap.org
 export const NEWSWAP_URL = "https://testnet.newswap.org"
 
-// test/main: 0x4fc7ccbee843633f9fd8f047c4d7b1b3579600f4 usdt为token0   dev:0x279677d9d2f4194428c9a39262129d870b5c5185 usdt为token1   
-export const NUSD_NEW_PAIR = '0x4fc7ccbee843633f9fd8f047c4d7b1b3579600f4'
+// test: 0x56ae975581a382193ff36579c81281e179486c43 usdt为token0   dev:0x279677d9d2f4194428c9a39262129d870b5c5185 usdt为token1   
+export const NUSD_NEW_PAIR = '0x56ae975581a382193ff36579c81281e179486c43'
 
 export const BUNDLE_ID = '1'
 
@@ -58,7 +58,12 @@ export const OVERVIEW_TOKEN_BLACKLIST = [
   '0xaced81aa4208333df1051f9ff99e5f067577ea99',
   '0xc5abf7f145094a9640c67436fe854b8bc399b34d',
   '0xdc1043b3e6a65125576926f57acf8c5bdf6c1663',
-  '0xf2272db3daa5bee1c7ed953c80f43939053de4d6'
+  '0xf2272db3daa5bee1c7ed953c80f43939053de4d6',
+  '0x437c8c30da026a4c5c9825fdca8e0acf94e5ccad',
+  '0xb4311ffe4be83d2e7b0905e5d637bfa323547f24',
+  '0x3ba05fa3304f68070892490f994abda88ad6a2c6',
+  '0xe5ce187fdc7b7eee513998ee25e8496b2b57ba05',
+  '0x2cd062ff9997e3f7697baf7028f42fe69deeaef9'
 ]
 
 // pair blacklist

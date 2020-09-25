@@ -53,7 +53,7 @@ const DashGrid = styled.div`
     :first-child {
       justify-content: flex-start;
       text-align: left;
-      width: 20px;
+      width: 50px;
     }
   }
 
