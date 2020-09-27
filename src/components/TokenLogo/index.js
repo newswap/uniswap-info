@@ -68,7 +68,7 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     )
   }
 
-  const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${isAddress(
+  const path = `https://misc.newswap.org/tokenlist/assets/${isAddress(
     address
   )}/logo.png`
 
