@@ -148,16 +148,16 @@ const TXN_TYPE = {
 
 const ITEMS_PER_PAGE = 10
 
-function getTransactionType(event, symbol0, symbol1) {
+function getTransactionType(event, symbol0, symbol1, t) {
   const formattedS0 = symbol0?.length > 8 ? symbol0.slice(0, 7) + '...' : symbol0
   const formattedS1 = symbol1?.length > 8 ? symbol1.slice(0, 7) + '...' : symbol1
   switch (event) {
     case TXN_TYPE.ADD:
-      return 'Add ' + formattedS0 + ' and ' + formattedS1
+      return t('addTokens', {formattedS0: formattedS0, formattedS1: formattedS1})
     case TXN_TYPE.REMOVE:
-      return 'Remove ' + formattedS0 + ' and ' + formattedS1
+      return t('removeTokens', {formattedS0: formattedS0, formattedS1: formattedS1})
     case TXN_TYPE.SWAP:
-      return 'Swap ' + formattedS0 + ' for ' + formattedS1
+      return t('swapTokens', {formattedS0: formattedS0, formattedS1: formattedS1})
     default:
       return ''
   }
@@ -296,7 +296,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
       <DashGrid style={{ height: '48px' }}>
         <DataText area="txn" fontWeight="500">
           <Link color={color} external href={urls.showTransaction(item.hash)}>
-            {getTransactionType(item.type, item.token1Symbol, item.token0Symbol)}
+            {getTransactionType(item.type, item.token1Symbol, item.token0Symbol, t)}
           </Link>
         </DataText>
         <DataText area="value">

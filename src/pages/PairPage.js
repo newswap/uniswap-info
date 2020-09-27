@@ -467,7 +467,7 @@ function PairPage({ pairAddress, history }) {
                     </AutoRow>
                   </Column>
                   <ButtonLight color={backgroundColor}>
-                    <Link color={backgroundColor} external href={EXPLORER_URL + '/address/' + pairAddress}>
+                    <Link color={backgroundColor} external href={EXPLORER_URL + '/token/' + pairAddress}>
                     { t('viewOnNewtonExplorer') } ↗
                     </Link>
                   </ButtonLight>

@@ -104,5 +104,8 @@
   "secondsAgo": "{{seconds}} seconds ago",
   "rate0": "Rate 0",
   "rate1": "Rate 1",
-  "price(line)": "Price (Line)"
+  "price(line)": "Price (Line)",
+  "addTokens": "Add {{formattedS0}} and {{formattedS1}}",
+  "removeTokens": "Remove {{formattedS0}} and {{formattedS1}}",
+  "swapTokens": "Swap {{formattedS0}} for {{formattedS1}}"
 }

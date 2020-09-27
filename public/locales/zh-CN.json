@@ -104,5 +104,8 @@
   "secondsAgo": "{{seconds}}秒前",
   "rate0": "比率 0",
   "rate1": "比率 1",
-  "price(line)": "价格(线型)"
+  "price(line)": "价格(线型)",
+  "addTokens": "添加 {{formattedS0}} 和 {{formattedS1}}",
+  "removeTokens": "移除 {{formattedS0}} 和 {{formattedS1}}",
+  "swapTokens": "{{formattedS0}} 兑换 {{formattedS1}}"
 }

@@ -130,7 +130,7 @@ function AccountPage({ account }) {
   const dynamicPositions = activePosition ? [activePosition] : positions
 
   const aggregateFees = dynamicPositions?.reduce(function (total, position) {
-    return total + position.fees.sum
+    return total + (position.fees.sum ? position.fees.sum : 0)
   }, 0)
 
   const positionValue = useMemo(() => {
@@ -138,7 +138,7 @@ function AccountPage({ account }) {
       ? dynamicPositions.reduce((total, position) => {
         return (
           total +
-          (parseFloat(position?.liquidityTokenBalance) / parseFloat(position?.pair?.totalSupply)) *
+          (parseFloat(position?.pair?.totalSupply) ? parseFloat(position?.liquidityTokenBalance) / parseFloat(position?.pair?.totalSupply) : 0) *
           position?.pair?.reserveUSD
         )
       }, 0)

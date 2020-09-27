@@ -70,7 +70,7 @@ export default function Warning({ type, show, setShow, address }) {
                 fontWeight={500}
                 lineHeight={'145.23%'}
                 color={'#20C5A0'}
-                href={EXPLORER_URL + '/address/' + address}
+                href={EXPLORER_URL + '/token/' + address}
                 target="_blank"
               >
                 { t('viewContractOnNewtonExplorer', {tokenOrPair: type === 'token' ? 'token' : 'pair'}) }
@@ -91,7 +91,7 @@ export default function Warning({ type, show, setShow, address }) {
                   fontWeight={500}
                   lineHeight={'145.23%'}
                   color={'#20C5A0'}
-                  href={EXPLORER_URL + '/address/' + address}
+                  href={EXPLORER_URL + '/token/' + address}
                   target="_blank"
                 >
                   { t('viewContractOnNewtonExplorer', {tokenOrPair: type === 'token' ? 'token' : 'pair'}) }
