@@ -391,7 +391,7 @@ export function useUserLiquidityChart(account) {
           return (totalUSD =
             totalUSD +
             (ownershipPerPair[dayData.pairAddress]
-              ? (parseFloat(ownershipPerPair[dayData.pairAddress].lpTokenBalance) / parseFloat(dayData.totalSupply)) *
+              ? (parseFloat(dayData.totalSupply) ? parseFloat(ownershipPerPair[dayData.pairAddress].lpTokenBalance) / parseFloat(dayData.totalSupply) : 0) *
                 parseFloat(dayData.reserveUSD)
               : 0))
         }, 0)

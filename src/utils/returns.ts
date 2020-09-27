@@ -179,11 +179,11 @@ export async function getHistoricalPairReturns(startDateTimestamp, currentPairDa
   }
 
   const dayTimestamps = []
-  while (dayIndex < currentDayIndex) {
+  while (dayIndex <= currentDayIndex) {
     // only account for days where this pair existed
-    if (dayIndex * 86400 >= parseInt(currentPairData.createdAtTimestamp)) {
-      dayTimestamps.push(dayIndex * 86400)
-    }
+    // if (dayIndex * 86400 >= parseInt(currentPairData.createdAtTimestamp)) {
+    dayTimestamps.push(dayIndex * 86400)
+    // }
     dayIndex = dayIndex + 1
   }
 
@@ -234,7 +234,7 @@ export async function getHistoricalPairReturns(startDateTimestamp, currentPairDa
       positionT1.liquidityTokenTotalSupply = positionT1.totalSupply
       positionT1.liquidityTokenBalance = positionT0.liquidityTokenBalance
       const currentLiquidityValue =
-        (parseFloat(positionT1.liquidityTokenBalance) / parseFloat(positionT1.liquidityTokenTotalSupply)) *
+        (parseFloat(positionT1.liquidityTokenTotalSupply) ? parseFloat(positionT1.liquidityTokenBalance) / parseFloat(positionT1.liquidityTokenTotalSupply) : 0) *
         parseFloat(positionT1.reserveUSD)
       const localReturns = getMetricsForPositionWindow(positionT0, positionT1)
       const localFees = netFees + localReturns.fees
