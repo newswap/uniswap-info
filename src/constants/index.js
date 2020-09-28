@@ -5,19 +5,21 @@ export const FACTORY_ADDRESS = '0x723913136a42684B5e3657e3cD2f67ee3e83A82D'
 export const WNEW_ADDRESS = '0xf4905b9bc02ce21c98eac1803693a9357d5253bf' //小写
 
 // test:1007  mainnet:1012
-export const CHAIN_ID = 1007
+export const CHAIN_ID = 1012
 
-// testnet: https://explorer.testnet.newtonproject.org     devnet:http://explorer.newtonproject.dev.diynova.com
-export const EXPLORER_URL = 'https://explorer.testnet.newtonproject.org'
+// testnet: https://explorer.testnet.newtonproject.org     main:https://explorer.newtonproject.org
+export const EXPLORER_URL = 'https://explorer.newtonproject.org'
 
 // testnet: https://app.testnet.newswap.org     mainnet:https://app.newswap.org
-export const EXCHANGE_URL = 'https://app.testnet.newswap.org'
+export const EXCHANGE_URL = 'https://app.newswap.org'
 
 // testnet: https://testnet.newswap.org   mainnet: https://newswap.org
-export const NEWSWAP_URL = "https://testnet.newswap.org"
+export const NEWSWAP_URL = "https://newswap.org"
 
-// test: 0x56ae975581a382193ff36579c81281e179486c43 usdt为token0   dev:0x279677d9d2f4194428c9a39262129d870b5c5185 usdt为token1   
-export const NUSD_NEW_PAIR = '0x56ae975581a382193ff36579c81281e179486c43'
+export const LOGO_URL = "https://misc.newswap.org/tokenlist/assets/" + CHAIN_ID
+
+// main: 0x0c0c1cfb948a75595b7d70703bf50190e62a2286 usdt为token0    test: 0x56ae975581a382193ff36579c81281e179486c43 usdt为token0   dev:0x279677d9d2f4194428c9a39262129d870b5c5185 usdt为token1   
+export const NUSD_NEW_PAIR = '0x0c0c1cfb948a75595b7d70703bf50190e62a2286'
 
 export const BUNDLE_ID = '1'
 
@@ -32,7 +34,7 @@ export const timeframeOptions = {
 // test: https://release.cloud.diynova.com/sth/newswap/tokenlist.json
 // token list urls to fetch tokens from - use for warnings on tokens and pairs
 export const SUPPORTED_LIST_URLS__NO_ENS = [
-  'https://release.cloud.diynova.com/sth/newswap/tokenlist.json'
+  'https://misc.newswap.org/tokenlist/newswap_defi_100.json'
   // 'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
   // 'https://www.coingecko.com/tokens_list/uniswap/defi_100/v_0_0_0.json'
 ]
@@ -50,7 +52,6 @@ export const OVERVIEW_TOKEN_BLACKLIST = [
   '0xb4e08bdf2988790d79f6fbfb773d4315ae56e340',
   '0x5e8aac72d2a54c5e734c5c282e468a36d79e7c45',
   '0x9271a1607f1ba07bdd9b020d3e218938d244dde2',
-  '0x76791bfa7098f8aac59ce9612ce083584fd332af',
   '0x23d8f7857a8295ee337ea6da04de4daaac4e8f6c',
   '0x233a3855832755836d65727e0efc9a090167c9cc',
   '0x4c7f7905625efc7fd47d5556db80e79a94e8da02',

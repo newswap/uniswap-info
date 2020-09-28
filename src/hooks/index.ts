@@ -3,14 +3,14 @@ import { shade } from 'polished'
 import Vibrant from 'node-vibrant'
 import { hex } from 'wcag-contrast'
 import { isAddress } from '../utils'
+import { LOGO_URL } from '../constants'
+
 import copy from 'copy-to-clipboard'
 
 export function useColor(tokenAddress, token) {
   const [color, setColor] = useState('#20C5A0')
   if (tokenAddress) {
-    const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${isAddress(
-      tokenAddress
-    )}/logo.png`
+    const path = LOGO_URL + `/${ isAddress(tokenAddress) }/logo.png`
     if (path) {
       Vibrant.from(path).getPalette((err, palette) => {
         if (palette && palette.Vibrant) {

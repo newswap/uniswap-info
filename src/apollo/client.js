@@ -6,7 +6,7 @@ import { HttpLink } from 'apollo-link-http'
 // devnet:http://47.240.113.82:8000/subgraphs/name/newton/newswap
 // testnet: https://graphapi.testnet.newswap.org/subgraphs/name/newton/newswap        
 // mainnet: https://graphapi.newswap.org/subgraphs/name/newton/newswap
-const CLIENT_URL = 'https://graphapi.testnet.newswap.org/subgraphs/name/newton/newswap'
+const CLIENT_URL = 'https://graphapi.newswap.org/subgraphs/name/newton/newswap'
 
 export const client = new ApolloClient({
   link: new HttpLink({

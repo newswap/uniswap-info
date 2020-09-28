@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { isAddress } from '../../utils/index.js'
 import PlaceHolder from '../../assets/placeholder.png'
 import EthereumLogo from '../../assets/new.png'
-import { WNEW_ADDRESS } from '../../constants'
+import { WNEW_ADDRESS, LOGO_URL } from '../../constants'
 
 const BAD_IMAGES = {}
 
@@ -68,9 +68,7 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     )
   }
 
-  const path = `https://misc.newswap.org/tokenlist/assets/${isAddress(
-    address
-  )}/logo.png`
+  const path = LOGO_URL + `/${ isAddress(address) }/logo.png`
 
   return (
     <Inline>
