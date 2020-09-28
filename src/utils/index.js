@@ -378,14 +378,14 @@ export const formattedNum = (number, usd = false, acceptNegatives = false) => {
 
   if (usd) {
     if (num < 0.1) {
-      return '$' + Number(parseFloat(num).toFixed(4))
+      return '$' + Number(parseFloat(num).toFixed(6))
     } else {
       let usdString = priceFormatter.format(num)
       return '$' + usdString.slice(1, usdString.length)
     }
   }
 
-  return Number(parseFloat(num).toFixed(5))
+  return Number(parseFloat(num).toFixed(6))
 }
 
 export function rawPercent(percentRaw) {
