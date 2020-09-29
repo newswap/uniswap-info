@@ -366,8 +366,8 @@ export const formattedNum = (number, usd = false, acceptNegatives = false) => {
     return 0
   }
 
-  if (num < 0.0001 && num > 0) {
-    return usd ? '< $0.0001' : '< 0.0001'
+  if (num < 0.000001 && num > 0) {
+    return usd ? '< $0.000001' : parseFloat(num).toFixed(10).toString()
   }
 
   if (num > 1000) {
