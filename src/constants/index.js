@@ -5,21 +5,21 @@ export const FACTORY_ADDRESS = '0x723913136a42684B5e3657e3cD2f67ee3e83A82D'
 export const WNEW_ADDRESS = '0xf4905b9bc02ce21c98eac1803693a9357d5253bf' //小写
 
 // test:1007  mainnet:1012
-export const CHAIN_ID = 1012
+export const CHAIN_ID = 1007
 
 // testnet: https://explorer.testnet.newtonproject.org     main:https://explorer.newtonproject.org
-export const EXPLORER_URL = 'https://explorer.newtonproject.org'
+export const EXPLORER_URL = 'https://explorer.testnet.newtonproject.org'
 
 // testnet: https://app.testnet.newswap.org     mainnet:https://app.newswap.org
-export const EXCHANGE_URL = 'https://app.newswap.org'
+export const EXCHANGE_URL = 'https://app.testnet.newswap.org'
 
 // testnet: https://testnet.newswap.org   mainnet: https://newswap.org
-export const NEWSWAP_URL = "https://newswap.org"
+export const NEWSWAP_URL = "https://testnet.newswap.org"
 
 export const LOGO_URL = "https://misc.newswap.org/tokenlist/assets/" + CHAIN_ID
 
 // main: 0x0c0c1cfb948a75595b7d70703bf50190e62a2286 usdt为token0    test: 0x56ae975581a382193ff36579c81281e179486c43 usdt为token0   dev:0x279677d9d2f4194428c9a39262129d870b5c5185 usdt为token1   
-export const NUSD_NEW_PAIR = '0x0c0c1cfb948a75595b7d70703bf50190e62a2286'
+export const NUSD_NEW_PAIR = '0x56ae975581a382193ff36579c81281e179486c43'
 
 export const BUNDLE_ID = '1'
 
