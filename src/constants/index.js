@@ -1,25 +1,19 @@
-// dev:0x7F053946C99f6a17084e5aE1fd76587d43C4bb54   test/main:0x723913136a42684B5e3657e3cD2f67ee3e83A82D
-export const FACTORY_ADDRESS = '0x723913136a42684B5e3657e3cD2f67ee3e83A82D'
+export const FACTORY_ADDRESS = process.env.REACT_APP_FACTORY_ADDRESS
 
-// dev:0x2678fb6e5af58f7b520ace2cd3a4f476b771c6f2   test/main:0xf4905b9bc02ce21c98eac1803693a9357d5253bf
-export const WNEW_ADDRESS = '0xf4905b9bc02ce21c98eac1803693a9357d5253bf' //小写
+export const WNEW_ADDRESS = process.env.REACT_APP_WNEW_ADDRESS //小写
 
-// test:1007  mainnet:1012
-export const CHAIN_ID = 1007
+export const CHAIN_ID = process.env.REACT_APP_CHAIN_ID
 
-// testnet: https://explorer.testnet.newtonproject.org     main:https://explorer.newtonproject.org
-export const EXPLORER_URL = 'https://explorer.testnet.newtonproject.org'
+export const EXPLORER_URL = process.env.REACT_APP_EXPLORER_URL
 
-// testnet: https://app.testnet.newswap.org     mainnet:https://app.newswap.org
-export const EXCHANGE_URL = 'https://app.testnet.newswap.org'
+export const EXCHANGE_URL = process.env.REACT_APP_EXCHANGE_URL
 
-// testnet: https://testnet.newswap.org   mainnet: https://newswap.org
-export const NEWSWAP_URL = "https://testnet.newswap.org"
+export const NEWSWAP_URL = process.env.REACT_APP_NEWSWAP_URL
 
 export const LOGO_URL = "https://misc.newswap.org/tokenlist/assets/" + CHAIN_ID
 
-// main: 0x0c0c1cfb948a75595b7d70703bf50190e62a2286 usdt为token0    test: 0x56ae975581a382193ff36579c81281e179486c43 usdt为token0   dev:0x279677d9d2f4194428c9a39262129d870b5c5185 usdt为token1   
-export const NUSD_NEW_PAIR = '0x56ae975581a382193ff36579c81281e179486c43'
+// mainnet-nusd为token0    testnet-nusd为token0   devnet-nusd为token1   
+export const NUSD_NEW_PAIR = process.env.REACT_APP_NUSD_NEW_PAIR    //小写
 
 export const BUNDLE_ID = '1'
 

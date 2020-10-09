@@ -3,10 +3,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 
 //https://api.thegraph.com/subgraphs/name/ianlapham/uniswapv2
-// devnet:http://47.240.113.82:8000/subgraphs/name/newton/newswap
-// testnet: https://graphapi.testnet.newswap.org/subgraphs/name/newton/newswap        
-// mainnet: https://graphapi.newswap.org/subgraphs/name/newton/newswap
-const CLIENT_URL = 'https://graphapi.testnet.newswap.org/subgraphs/name/newton/newswap'
+const CLIENT_URL = process.env.REACT_APP_SUBGRAPHS_URL
 
 export const client = new ApolloClient({
   link: new HttpLink({
