@@ -57,6 +57,8 @@ function GlobalPage() {
   // breakpoints
   const below800 = useMedia('(max-width: 800px)')
 
+  const below1080 = useMedia('(max-width: 1080px)')
+
   // scrolling refs
 
   useEffect(() => {
@@ -154,6 +156,15 @@ function GlobalPage() {
           <Panel style={{ margin: '1rem 0' }}>
             <TxnList transactions={transactions} />
           </Panel>
+
+          {below1080 && (
+            <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
+              <RowBetween>
+                <TYPE.main fontSize={'1rem'}>{ t('accounts') }</TYPE.main>
+                <CustomLink to={'/accounts'}>{ t('seeAll') }</CustomLink>
+              </RowBetween>
+            </ListOptions>
+          )}
         </div>
       </ContentWrapper>
     </PageWrapper>

@@ -41,10 +41,10 @@ const NetworkTag = styled.div`
 `
 
 function displayNetwork() {
-  if (CHAIN_ID == '1012') {
+  if (CHAIN_ID === '1012') {
     return 'NewChainMainNet';
   }
-  else if (CHAIN_ID == '1007') {
+  else if (CHAIN_ID === '1007') {
     return 'NewChainTestNet';
   }
   else {
