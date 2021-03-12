@@ -12,7 +12,7 @@ export const NEWSWAP_URL = process.env.REACT_APP_NEWSWAP_URL
 
 export const LOGO_URL = "https://misc.newswap.org/tokenlist/assets/" + CHAIN_ID
 
-// mainnet-nusd为token0    testnet-nusd为token0   devnet-nusd为token1   
+// mainnet-nusd为token0    testnet-nusd为token1   devnet-nusd为token1   
 export const NUSD_NEW_PAIR = process.env.REACT_APP_NUSD_NEW_PAIR    //小写
 
 export const BUNDLE_ID = '1'
