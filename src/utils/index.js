@@ -110,10 +110,16 @@ export function getTimestampsForChanges() {
     .subtract(2, 'day')
     .startOf('minute')
     .unix()
+
+  // TODO 测试服务器临时用下，满1周后改正常
   const tWeek = utcCurrentTime
-    .subtract(1, 'week')
+    .subtract(3, 'day')
     .startOf('minute')
     .unix()
+  // const tWeek = utcCurrentTime
+  //   .subtract(1, 'week')
+  //   .startOf('minute')
+  //   .unix()
   return [t1, t2, tWeek]
 }
 
